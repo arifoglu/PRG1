@@ -14,9 +14,9 @@ int main(){
     // déterminer les variables et prendre les des utilisateurs
     int km1,km2,m1,m2,cm1,cm2,mm1,mm2;
 
-    cout << "1.longeurs  (km - metre - centimetre - milimetre) : ";
+    cout << "1.longeurs (laissez une espace entre des longeurs) (km - metre - centimetre - milimetre) : ";
     cin >> km1 >> m1 >> cm1 >> mm1;
-    cout << "2.longeurs  (km - metre - centimetre - milimetre) : ";
+    cout << "2.longeurs (laissez une espace entre des longeurs) (km - metre - centimetre - milimetre) : ";
     cin >> km2 >> m2 >> cm2 >> mm2;
 
     // Calculation
