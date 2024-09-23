@@ -45,7 +45,7 @@ int main(){
     long long cm_result = total_mm / mm_per_cm;
     total_mm = total_mm % mm_per_cm;
 
-    // afficher sur la console
+    // affichage
     cout << km1 << "km " << m1 << "m " << cm1 << "cm " << mm1 << "mm " << " + " << km2 << "km " << m2 << "m " << cm2 << "cm " << mm2 << "mm " << " font  : " << km_result << "km "  << m_result << "m " << cm_result << "cm " << total_mm << "mm " << "." <<endl;
 
     return EXIT_SUCCESS;
