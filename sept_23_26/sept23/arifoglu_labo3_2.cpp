@@ -21,7 +21,7 @@ int main(){
     cout << "Vous êtes arrivé à " << heure_arrive << "h" << minute_arrive<<endl;
     cout << "Vous êtes sorties à "<< heure_depart << "h" << minute_depart<<endl;
 
-    // calcul total minute en minute 
+    // calcul total dure en minute 
     int dure_trajet_arrive = (heure_arrive * min_per_heure) + minute_arrive;
     int dure_trajet_sortie = (heure_depart * min_per_heure) + minute_depart;
     
