@@ -1,4 +1,4 @@
-//abdulkadir arifoglu - 23.09.2024 - Laboratoire 3
+// abdulkadir arifoglu - 23.09.2024 - Laboratoire 3
 // calculer la duree d'un trajet 
 #include <iostream>
 #include <cstdlib>
