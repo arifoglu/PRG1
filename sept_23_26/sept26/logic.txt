@@ -1,0 +1,13 @@
+a) a est non negatif => a >= 0
+b) a est positif ou nul => a > 0
+c) a est nul =>  a == b
+d) a est strictement plus petit que b =>  a < b
+e) a est un multiple de 3 et non plus grand que b => a % 3 == 0 && a <= b
+f) a est plus agrand que b mais plus petit que c =>  < b && a < c
+g) a < b && a > c
+h)le code a represente une lettre majuscule => a >= 'A' a <= 'Z'
+i)le code a represente une lettre => a >= 'A' and a <= 'Z' || a >= 'a' and 'b' > 
+j) le  a % 7 == 0 || a % 11 = 0
+k) a b c un ordre strictement croissant => a < b && b < c 
+l) 5.bit de a = 1  => a bitand (1 << 4) 
+m) a / b donne resultat plus grand que c => b != 0 && (a / b)  > c  a / b donne resultat plus grand que c
