@@ -7,9 +7,9 @@ using namespace std;
 
 int main(){
     // des constantes pour les conversion d'unités
-    const long long mm_per_cm = 10;     // 1 cm = 10 mm 
-    const long long cm_per_metre = 100; // 1 m  = 100 cm
-    const long long metre_per_km = 1000;// 1km  = 1000 m
+    const int mm_per_cm = 10;     // 1 cm = 10 mm 
+    const int cm_per_metre = 100; // 1 m  = 100 cm
+    const int metre_per_km = 1000;// 1km  = 1000 m
     
     // déterminer les variables et prendre les des utilisateurs
     int km1,km2,m1,m2,cm1,cm2,mm1,mm2;
@@ -22,11 +22,11 @@ int main(){
     // Calculation
 
     // convertir toutes les unités en mm 
-    long long total_mm1 = (((((km1 * metre_per_km) + m1) * cm_per_metre) + cm1) * mm_per_cm) + mm1;
-    long long total_mm2 = (((((km2 * metre_per_km) + m2) * cm_per_metre) + cm2) * mm_per_cm) + mm2;
+    int total_mm1 = (((((km1 * metre_per_km) + m1) * cm_per_metre) + cm1) * mm_per_cm) + mm1;
+    int total_mm2 = (((((km2 * metre_per_km) + m2) * cm_per_metre) + cm2) * mm_per_cm) + mm2;
     
     // total mm 
-    long long total_mm = total_mm1 + total_mm2;
+    int total_mm = total_mm1 + total_mm2;
     
     // Convertir du total mm respectivement => km - metre - cm - mm
     // pour trouver km il faut diviser total_mm en parametres
@@ -34,15 +34,15 @@ int main(){
     // répéter ce processus vers le bas comme une structure en cascade
 
     // trouver km
-    long long km_result = total_mm / (metre_per_km * cm_per_metre * mm_per_cm);
+    int km_result = total_mm / (metre_per_km * cm_per_metre * mm_per_cm);
     total_mm = total_mm % (metre_per_km * cm_per_metre * mm_per_cm);
     
     // trouver m
-    long long m_result = total_mm / (cm_per_metre * mm_per_cm);
+    int m_result = total_mm / (cm_per_metre * mm_per_cm);
     total_mm = total_mm % (cm_per_metre * mm_per_cm);
 
     // trouver cm
-    long long cm_result = total_mm / mm_per_cm;
+    int cm_result = total_mm / mm_per_cm;
     total_mm = total_mm % mm_per_cm;
 
     // affichage
