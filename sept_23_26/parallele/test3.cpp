@@ -4,11 +4,17 @@
 using namespace std;
 
 int main(){
-    int i, j, k;
+ int y; cin >> y;
+  if (cin) { // conversion du flux cin en booléen
+  cout << "Valeur correctement lue\n";
+  } else {
+  cout << "Erreur dans le flux d'entrée\n";
+  y = 42;
+  };
 
-    i = (i = 3) and (k = 2) or (k = i - 3) ? (j = k + 5) : (j = k - 1);
-
-    cout << "i"<<i<<"j"<<j <<"k"<<k<<endl;
-    
+  cin ? cout << "Valeur correctement lue\n" : cout << "Erreur dans le flux d'entrée\n";
+  
+  int x;  cin >> x ;
+  cin  && x == 0 ? cout << "Valeur nulle\n" : cout << "Valeur non nulle\n";
     return EXIT_SUCCESS;
 }
