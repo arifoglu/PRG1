@@ -1,4 +1,4 @@
-// abdulkadir arifoglu 03.10.2024 Laboratoire7
+// abdulkadir arifoglu 03.10.2024 Laboratoire 7
 /* 
 - Cet programme qui va lire une suite de valeurs non négatives de type double et qui affiche leur moyenne et leur variance
 - Pour indiquer qu’il a terminé l’introduction des données, l’utilisateur fournit un nombre négatif.
@@ -53,9 +53,11 @@ int main(){
         //  La somme des carrés des nombres saisis
         total_carre_des_numeros += pow(numeros,2); 
 
-        // selon la formul variance
-        variance = (total_carre_des_numeros - ((1.0 / count) * pow(total,2)))/ (count - 1.0);
-
+        // il nous faut au moins deux données pour calculer la variance
+        if(count > 1){
+            // selon la formul variance     
+            variance = (total_carre_des_numeros - ((1.0 / count) * pow(total,2)))/ (count - 1.0);
+        }
     }
     cout << "La moyenne des valeurs saisies : " << moyen <<endl;
     cout << "La variance des valeurs saisies : " << variance <<endl;
