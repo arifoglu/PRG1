@@ -51,12 +51,12 @@ int main(){
         */
 
         //  La somme des carrés des nombres saisis
-        total_carre_des_numeros += pow(numeros,2); 
+        total_carre_des_numeros += (numeros * numeros); 
 
         // il nous faut au moins deux données pour calculer la variance
         if(count > 1){
             // selon la formul variance     
-            variance = (total_carre_des_numeros - ((1.0 / count) * pow(total,2)))/ (count - 1.0);
+            variance = (total_carre_des_numeros - ((1.0 / count) * (total * total)))/ (count - 1.0);
         }
     }
     cout << "La moyenne des valeurs saisies : " << moyen <<endl;
