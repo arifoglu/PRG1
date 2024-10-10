@@ -20,8 +20,11 @@ int main() {
     // Pour génère à chaque fois une séquence de nombres différente
     mt19937 gen_mersenne(rd());
 
-    //On va essayer jusqu'à 2^19
+    //Nous allons utiliser le resultat du fonction estime_Pi 
+    //Le boucle s'affichera des estimations du π en chaque puissance de 2. 
+    //Nous allons essayer jusqu'à 2^19.( cette limite peut changer,on peut changer quand on veut.Si on veut l'estimation plus precisement,ou sensible,on peut augmenter le nombre des tirages.)
     for(int i = 1;i < 524288 ; i *= 2){
+        // Pour utiliser le resultat du estime_Pi,il faut initialiser dans cette variable
         double pi_estimes = estime_Pi(i,gen_mersenne); 
         cout << "π ~ " << pi_estimes << endl;
     }
