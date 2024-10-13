@@ -40,11 +40,11 @@ int main(){
      CD = longeur_vector_CD;
      DA = longeur_vector_DA;
     */
-    // nous allons utiliser sqrt() de <cmath>
-    double AB = sqrt((Bx - Ax) * (Bx - Ax) + (By - Ay) * (By - Ay));  
-    double BC = sqrt((Cx - Bx) * (Cx - Bx) + (Cy - By) * (Cy - By));  
-    double CD = sqrt((Dx - Cx) * (Dx - Cx) + (Dy - By) * (Dy - By));  
-    double DA = sqrt((Dx - Ax) * (Dx - Ax) + (Dy - Ay) * (Dy - Ay));  
+    // nous allons 
+    double AB = (Bx - Ax) * (Bx - Ax) + (By - Ay) * (By - Ay);  
+    double BC = (Cx - Bx) * (Cx - Bx) + (Cy - By) * (Cy - By);  
+    double CD = (Dx - Cx) * (Dx - Cx) + (Dy - By) * (Dy - By);  
+    double DA = (Dx - Ax) * (Dx - Ax) + (Dy - Ay) * (Dy - Ay);  
     
     // verifier les types
     // verifier des côtes
