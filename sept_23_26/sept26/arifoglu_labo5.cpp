@@ -36,7 +36,7 @@ int main(){
       {
          if(semaines == 1)
          {
-          cout << semaines << " semaines ";
+          cout << semaines << " semaine ";
          }
          else 
          {
