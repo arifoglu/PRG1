@@ -8,12 +8,13 @@ int main() {
     cin >> nom;
     
     cout << nom <<endl;
-    
-    getchar(); // Manger le retour de ligne
-    
+
+    // Manger le retour de ligne
+    getchar(); 
+    //2.option => cin.ignore()
     cout << "Quels sont vos prenoms : ";
     string prenom ; 
-    getline(cin, prenom);
+    getline(cin, prenom,'.');
     
     cout << "bonjour " << prenom << " " << nom << endl ;
     
