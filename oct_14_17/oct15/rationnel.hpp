@@ -21,8 +21,6 @@ bool operator>=(const Rationnel& a,const Rationnel& b);
 bool operator<(const Rationnel& a,const Rationnel& b);
 bool operator<=(const Rationnel& a,const Rationnel& b);
 
-
-
 void print_Rationnel(const Rationnel& r);
 
 #endif

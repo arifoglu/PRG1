@@ -28,6 +28,7 @@ int main(){
     r2 = validateRationnel(r2);
     
     Rationnel resultat = r1 + r2;
+   
     cout << "Résultat : ";
     print_Rationnel(resultat);
 

@@ -85,6 +85,7 @@ bool operator<=(const Rationnel& a, const Rationnel& b) {
     return (a.numerateur * b.denominateur <= b.numerateur * a.denominateur);    
 }
 
+// pour imprimer 
 void print_Rationnel(const Rationnel& r) {
     cout << r.numerateur << " / " << r.denominateur << endl;
 }
