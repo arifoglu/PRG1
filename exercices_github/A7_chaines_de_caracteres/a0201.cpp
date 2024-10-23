@@ -6,8 +6,8 @@ using namespace std;
 int main(){
     //////////////
     // 1.
-    //string s1 = "ABC";
-    //string s2(s1, 1);
+    //string s1 = "ABCDEF";
+    //string s2(s1,1);
     //cout << '|' << s2 << '|' << endl;// |BC|  
     /////////////
     // 2.
@@ -22,7 +22,7 @@ int main(){
     
     // 4.
     //string s1 = "ABC";
-    //string s2(s1, 4, 1);
+    //string s2(s1, 4);
     //cout << '|' << s2 << '|' << endl; // erreur ä l'exécution
     
     // 5.
@@ -30,7 +30,7 @@ int main(){
     //cout << '|' << s << '|' << endl; // |ABC|
 
     // 6.
-    //string s("ABC", 5);
+    //string s("ABC", 4);
     //cout << '|' << s << '|' << endl; // |ABC\0|
 
     // 7.

@@ -14,30 +14,27 @@ using namespace std;
 int main(){
     char input ;
     cout << "Tapez un caractére : ";
-    cin >> input ;
-    if(isalpha(input))
-    {
-        cout << input << "est une lettre de l'alphabet : vrai" << endl;
-    }
-    else if(islower(input))
-    {
-        cout << input << "est une lettre minuscule : vrai" <<endl;
+    cin >> input;
 
-    }
-    else if(isdigit(input))
-    {
-        cout << input << "est un chiffre : vrai" <<endl;
-    }
-    else if(!isdigit(input))
-    {
-        cout << input << "est un chiffre : faux" <<endl;
-    }
-    else if(ispunct(input))
-    {
-        cout << input << "est un caractere de ponctuation : vrai" <<endl;
-    }
-    else if(!ispunct(input)){
-        cout << input << "est un caractere de ponctuation : faux" <<endl;
-    }
+    cout << "Code ASCII '"<< input << "'" << "                      : " << int(input) << endl;
+
+    isalpha(input) 
+    ? cout << "'" << input << "'" << " est une lettre de l'alphabet    : vrai\n" 
+    : cout << "'" << input << "'" << " est une lettre de l'alphabet    : faux\n";
+
+    islower(input) 
+    ? cout << "'" << input << "'" << " est une lettre de minuscule     : vrai\n" 
+    : cout << "'" << input << "'" << " est une lettre de minuscule     : faux\n";
+
+    isdigit(input) 
+    ? cout << "'" << input << "'" << " est un chiffre                  : vrai\n" 
+    : cout << "'" << input << "'" << " est un chiffre                  : faux\n";
+
+    ispunct(input) 
+    ? cout << "'" << input << "'" << " est un caractere de ponctuation : vrai\n" 
+    : cout << "'" << input << "'" << " est un caractere de ponctuation : faux\n";
+   
+
+
     return EXIT_SUCCESS;
 }
