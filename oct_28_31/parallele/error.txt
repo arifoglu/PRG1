@@ -1,0 +1,2 @@
+Erreur number est plus grand 100 
+Programme est fonctionné.
