@@ -1,40 +1,54 @@
 /*
+Écrivez un programme C++ qui lit un mot depuis le clavier, le stocke dans une chaîne de caractères, et vérifie si le mot est un palindrome. 
+- Un palindrome se lit de la même manière de gauche à droite et de droite à gauche. Voici des exemples de palindromes : 'radar', 'kayak', et 'sos'. Modifiez le programme pour qu'il lise et vérifie continuellement des mots.
 
+PS. Nous ne considérons pas ici les caractères accentués.
+
+Pensez à organiser votre code avec les fonctions.
+
+Entrez un mot (ou 'quitter' pour sortir) : sos
+Le mot 'sos' est un palindrome.
+Entrez un mot (ou 'quitter' pour sortir) : kayak
+Le mot 'kayak' est un palindrome.
+Entrez un mot (ou 'quitter' pour sortir) : heig-vd
+Le mot 'heig-vd' n'est pas un palindrome.
+Entrez un mot (ou 'quitter' pour sortir) : quitter
+Fermeture du programme. Au revoir !
 */
 #include <iostream>
 #include <cstdlib>
 #include <string>
 using namespace std;
 
+void palindrome(string word);
+
 int main(){
-    string prenom_nom;
-    cout << "Entrez votre prenom et votre nom :";
-    getline(cin,prenom_nom);
+    while(true){
+        string mots;
+        cout << "Entrez un mot (ou 'quit' pour sortir) : " ;
+        cin >> mots;
+        if(mots == "quit"){
+            cout << "Au revoir ! "<<endl;
+            break;
+        }
+        palindrome(mots);
+    }
     
-    // Premier lettre
-    char premiere_lettre_prenom = prenom_nom[0]; 
-    // Premier position d'espace blanc
-    int position_espace_blanc = prenom_nom.find(' ');
-    // Premier lettre du nom
-    char premiere_lettre_nom = prenom_nom[position_espace_blanc + 1];
-    // Premier position du nom
-    int position_premiere_lettre_nom = position_espace_blanc + 1; // 
 
-    // Prenom
-    string prenom = prenom_nom.substr(0,position_espace_blanc);
-    cout << "Votre prenom est   : " << prenom   << "\n";
-    // Nom
-    string nom = prenom_nom.substr(position_premiere_lettre_nom);
-    cout << "Votre nom est      : " << nom      << "\n";
-
-    // Acronyme
-    char lettre_premiere = prenom_nom[0];
-    char lettre_milieu = premiere_lettre_nom;
-    char lettre_derniere =  toupper(prenom_nom[prenom_nom.length() - 1 ]);
-     
-    string acronyme = string(1,lettre_premiere) + string(1,lettre_milieu) + string(1,lettre_derniere); 
-    cout << "Votre acronyme est : " << acronyme << "\n";
-
-    
     return EXIT_SUCCESS;
+}
+
+void palindrome(string word){
+    size_t len = word.length();
+    bool isPalindrome = true;
+
+    for(size_t i = 0; i < len / 2 ;++i){
+        if(word[i] != word[len - 1 - i])
+        {
+            isPalindrome = false;
+            break;
+        }
+    }
+    cout << (isPalindrome ? "Le mot " + word + " est un palindrome " : "Le mot " + word + " n'est pas un palindrome ") <<endl;
+
 }
