@@ -18,62 +18,67 @@
                     ┠───┼───┼───╂───┼───┼───┨
                     ┃ 6 │ 1 │ 2 ┃ 3 │ 4 │ 5 ┃
                     ┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛  
+- la solution appartient à M.Taillard                    
 */
 
 #include <iostream>
-#include <cstdlib>
+#include <iomanip>
+#include <string>
 using namespace std;
 
-//void sudoku(int m,int n);
+void separation(const string & gauche,const string & horizontal,const string & fine,const string & epaisse,const string & droit,int largeur,int m,int n);
+
+void imprime_grille(int m, int n);
 
 int main(){
-    //int x,y;
-    //cout << "Saisissez deux nombres pour grille de Sudoku : \n";
-    //cin >> x >> y;
-    //sudoku(x,y);
+  cout << "Impression d'une grille de sudoku m x n; donner m et n: ";
+  int m, n;
+  cin >> m >> n;
+  imprime_grille(m, n);
 
-    // pour faire un test
-    int n = 4;
-    int m = 4;
-    // en haut 
-    cout << "┏"; 
-    for(int i = 0;i < n;++i){
-        cout<<"━━━";
-        if(i < n - 1){
-            cout << "┯";
-        }
-    }
-    cout << "┓" << endl;
+  return EXIT_SUCCESS;
+}
 
-    // Remplissage et affichage de la grille
-    for (int i = 0; i < m; ++i) {
-        cout << "┃";
-        for (int j = 0; j < n; ++j) {
-            cout << " " << (i * n + j) << " ┃"; 
-        }
-        cout << endl;
-        if (i < m - 1) {
-            cout << "┠";
-            for (int j = 0; j < n; ++j) {
-                cout << "───";
-                // Séparateur entre les colonnes
-                if (j < n - 1) {
-                    cout << "╂"; 
-                }
-            }
-            cout << "┨" << endl;
-        }
-    }
-    //// en bas
-        cout << "┗"; 
-    for(int i = 0;i < n;++i){
-        cout<<"━━━";
-        if(i < n - 1){
-            cout << "┷";
-        }
-    }
-    cout << "┛" << endl;
+// separer
+void separation(const string & gauche, const string & horizontal, 
+                const string & fine, const string & epaisse, 
+                const string & droit, int largeur, int m, int n) {
+  for (int j = 0; j < n*m; ++j) {
+    if (j == 0)
+      cout << gauche;
+    else if (j % n == 0)
+      cout << epaisse;
+    else
+      cout << fine;
+    for (int k = 0; k <= largeur + 1; ++k)
+      cout << horizontal;
+  }
+  cout << droit << endl;
+}
+// imprimer
+void imprime_grille(int m, int n) {
+  int taille = n*m, largeur = 1;
+  
+  while ((taille /= 10) > 0) 
+    ++largeur;
     
-    return EXIT_SUCCESS;
+  for (int i = 0; i < m*n; ++i) {
+    if (i == 0)
+      separation("┏","━","┯","┳","┓", largeur, m, n); 
+    else if (i % m == 0)
+      separation("┣","━","┿","╋","┫", largeur, m, n); 
+    else
+      separation("┠","─","┼","╂","┨", largeur, m, n); 
+
+    for (int j = 0; j < m*n; ++j) {
+      if (j % n == 0)
+        cout << "┃ ";
+      else
+        cout << "│ ";
+      cout << setw(largeur) << (i/m + i*n + j)%(m*n) +1 << ' ';
+    }
+    cout << "┃\n";
+  }
+  separation("┗","━","┷","┻","┛", largeur, m, n); 
 }
 
