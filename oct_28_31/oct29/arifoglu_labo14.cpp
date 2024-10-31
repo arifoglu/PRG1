@@ -1,4 +1,4 @@
-// abdulkadir arifoglu 29.10.2024 Laboratoire 14
+// abdulkadir arifoglu 31.10.2024 Laboratoire 14
 /*
 Implanter une fonction de prototype :
  string & replace_all(string & str, const string & from, const string & to);qui remplace dans str toutes les occurrences de la sous-chaîne from par la sous-chaîne to
@@ -8,34 +8,43 @@ Implanter une fonction de prototype :
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 using namespace std;
 
-//string & replace_all(string & str, const string & from, const string & to);
-//string & replace_all(string & str, const string & from, const string & to){
-//    size_t pos = str.find(from);
-//    cout << pos << endl;
-//}
+string & replace_all(string & str, const string & from, const string & to);
 
 int main(){
-    string mot;
-    cout << "Entrez un mot : ";
-    cin >> mot;
-    
-    size_t pos = mot.find("on");
-    
-    if(pos != string::npos)
-    {
-        cout << pos << endl;
-    }
-    else
-    {
-        cout << "on" << " n'existe pas."<<endl;
-    }
+    string text, from, to;
+    cout << "Ecrivez un text : ";
+    getline(cin,text) ;
+    cout << "Quelle mot voulez-vous changer ? : ";
+    cin >> from ;
+    cout << "Quelle mot voulez-vous mettre ? : ";
+    cin >> to ;
 
-    //replace_all(mot,"on","nous");
-
+    // modifier le text
+    string text_modifie = replace_all(text,from,to);
+    cout << "Après le changement votre text : "<< text_modifie <<endl;
+    
     return EXIT_SUCCESS;
 }
 
+string & replace_all(string & str, const string & from, const string & to){
+    size_t position_from = str.find(from);
+    size_t longeur_from = from.length();
+
+    if(position_from == string::npos)
+    {
+        cout << "Le mot '" << from << "' n'a pas trouvé." << endl;
+    }
+    else
+    {
+        while(position_from != string::npos){
+              str.replace(position_from,longeur_from,to);
+              position_from = str.find(from,position_from + to.length());
+        }                
+    }
+    return str;
+}
 
 
