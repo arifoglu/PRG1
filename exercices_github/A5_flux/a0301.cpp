@@ -8,7 +8,6 @@ int main(){
 
     // 1 =>-15::* 
     //std::cout << std::setfill(':') << std::setw(5) << std::left << num << "*\n";
-     
     
     // 2 =>::-15*
     //std::cout << std::setfill(':') << std::setw(5) << std::right << num << "*\n";
@@ -18,7 +17,7 @@ int main(){
 
     ///////////////////// ???
     //// 4 =>true:*
-    //std::cout << std::setfill(':') << std::setw(6) << std::boolalpha << std::left << (num < 0) << "*";
+    //std::cout << std::setfill(':') << std::setw(5) << std::boolalpha << std::left << (num < 0) << "*\n";
     
     //// 5 =>false*
     //std::cout << std::setfill(':') << std::setw(5) << std::boolalpha << std::left << (num > 0) << "*\n";
