@@ -32,10 +32,9 @@ void sauvegarde(const string & nom_fichier_sortie, double lambda, double phi){
         cerr << "Erreur d'ouverture!!!";
         return;
     }
-
     fichier_sortie << lambda << "," << phi << endl;
     fichier_sortie.close();
-    
+   
 }
 
 
