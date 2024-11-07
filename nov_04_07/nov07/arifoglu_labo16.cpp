@@ -1,4 +1,10 @@
-// abdulkadir arifoglu 08.11.2024 Laboratoire 16 
+// Laboratoire  Laboratoire 16 (Sensibilisation à la complexité algorithmique)
+// Date:        08.11.2024
+// Author:      Abdulkadir Arifoglu
+// File:        arifoglu_labo16.cpp
+// Compiler:    clang version 16.0.0
+// Options:     -std=c++20 -Wall -Wextra -Wconversion -Wsign-conversion -Wvla -pedantic
+
 /*
 Buts: Manipulation avec des string, lecture dans un fichier, mesure du temps de calcul
 -Écrire un programme qui prend en paramètre un nom de fichier, un nombre entier (k) et une option
@@ -38,7 +44,7 @@ int main(int argc, char *argv[]){
     string mot1 = argv[4];
     string mot2 = argv[5];
     
-    //verification de mots1 mot2 
+    //verification de mot1 mot2 
     if(mot1.empty() || mot2.empty()){
         cerr << "Erreur : mot1 et mot2 ne doivent pas être vide.";
         return EXIT_FAILURE;
@@ -47,6 +53,7 @@ int main(int argc, char *argv[]){
     //Nous lisons le fichier donné par l'utilisateur et  le stockons dans 'str'
     string str = lire_fichier(nom_fichier_source);
 
+    // Verification du fichier 
     if(str.empty()){
         cerr << "Erreur : Le fichier est vide ou n'a pas pu ouvrir.";
         return EXIT_FAILURE;

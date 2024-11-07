@@ -30,6 +30,7 @@ string replace_all(string str, const string & from, const string & to){
     }
     else
     {
+        // Effectuer le remplacement lors que 'from' est trouvée dans 'str'
         while(position_from != string::npos){
               str.replace(position_from,longeur_from,to);
               //Déterminer la nouvelle position après le changement du mot
