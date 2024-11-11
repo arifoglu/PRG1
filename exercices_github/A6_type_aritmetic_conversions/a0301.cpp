@@ -33,10 +33,29 @@ int main() {
     cout << r4 << endl; // 
     cout << typeid(r4).name() << endl; // 8.5
 
-    auto r5 = a + b;
-    cout << r5 << endl; // 
-    cout << typeid(r5).name() << endl; // -1
+    //auto r5 = a + b;
+    //cout << r5 << endl; // 
+    //cout << typeid(r5).name() << endl; // -1
 
+    auto r6 = n + c + z;
+    cout << r6 << endl; // 
+    cout << typeid(r6).name() << endl; // double 77.5
+
+    auto r7 = c * n + p;
+    cout << r7 << endl; // 
+    cout << typeid(r7).name() << endl; // long 720
+
+    auto r8 = (int)c + b;
+    cout << r8 << endl; // 
+    cout << typeid(r8).name() << endl; // 66 unsigned
+
+    auto r9 = (double)x + a;
+    cout << r9 << endl; // 
+    cout << typeid(r9).name() << endl; // -0.75 double 
+
+    auto r10 = (long)c + n + b;
+    cout << r10 << endl; // 
+    cout << typeid(r10).name() << endl; // 
 
     return EXIT_SUCCESS;
 }

@@ -41,7 +41,7 @@ int main() {
     cout << v19 << endl; // double => 0.25
 
     auto v20 = 0x1.1p+2;
-    cout << v20 << endl; // 1.25
+    cout << v20 << endl; // 4.25
 
 
     return EXIT_SUCCESS;
