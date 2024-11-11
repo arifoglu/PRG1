@@ -8,17 +8,6 @@ Avec la fonction to_string de l'exercice 02-03, le programme ci-dessous
 #include <string>
 using namespace std;
 
-void supprimer_centre(vector<int> & vec){
-    if(vec.empty()) return;
-
-    size_t n = 2 - vec.size() % 2; // n elements de supprimer
-    
-    for(size_t i = 1 + vec.size() / 2 ; i < vec.size() ;++i){
-        vec[i - n] = vec[i];
-    }
-    vec.resize(vec.size() - n);
-}
-
 string to_string(const vector<int> & vec){
     string result = "[" ;
     for(size_t i = 0;i < vec.size();++i){
@@ -30,7 +19,17 @@ string to_string(const vector<int> & vec){
     result += "]";
     return result;
 }
+void supprimer_centre(vector<int> & vec){
+    if(vec.empty()) return;
 
+    // n elements de supprimer
+    size_t n = 2 - vec.size() % 2; 
+    
+    for(size_t i = 1 + vec.size() / 2 ; i < vec.size() ;++i){
+        vec[i - n] = vec[i];
+    }
+    vec.resize(vec.size() - n);
+}
 int main() {
 
 for (vector<int> v : {vector<int> 
