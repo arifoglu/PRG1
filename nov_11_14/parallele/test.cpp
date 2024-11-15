@@ -1,26 +1,56 @@
 #include <iostream>
 #include <vector>
+#include <array>
+#include <span>
 using namespace std;
 
 int main() {
+   /////////////vector
+   vector<int> v{1,2,3,4,5,6,7,8,9};
+   
+   span<int> s1(&v[0],v.size());
+   for(auto e : s1)cout << e ;
+   cout << endl;
 
-using Ligne = vector<int>; // Ligne est maintenant synomyme de vector<int>
-using Vecteur2D = vector<Ligne>; // using permet de clarifier le code
-    
-    Vecteur2D v2d; // v2d est pour l'instant un vecteur vide de vecteurs vides
-    v2d.push_back({1,2}); // On ajoute une première ligne à v2d
-    v2d.push_back({3,4,5,6}); // On ajoute une première ligne à v2d
-    v2d.push_back({7,8,9});
-     cout << v2d[1][3] << " " << v2d.at(2).at(1) << endl;
-    
-     for (auto ligne : v2d)
+   span s2(&v[0],v.size());
+   for(auto e : s2)cout << e ;
+   cout << endl;
 
-     { 
-        for (auto e : ligne)
-                cout << e << ' ';
-                cout << endl;
-    
-     }
-    
-    return 0;
+   span s3(v.data(),v.size());
+   for(auto e : s3)cout << e ;
+   cout << endl;
+
+   span s4(v);
+   for(auto e : s4)cout << e ;
+   cout << endl;
+   
+   //////////array
+   array<unsigned,3> a{6u, 7u, 8u};
+   
+   span s5(a.data(),a.size());
+   for(auto e : s5)cout << e ;
+   cout << endl;
+
+   span s6(a);
+   for(auto e : s6)cout << e ;
+   cout << endl;
+
+   ////////// array C
+   double t[5] = {1.,2.,3.,4.,5.};
+   
+   span s7(t,5);
+   for(auto e : s7)cout << e ;
+   cout << endl;
+
+   span s8(t);
+   for(auto e : s8)cout << e ;
+   cout << endl;
+   
+   //////////////
+   short* p = new short[3];
+   span s9(p,3);
+   for(auto e : s9)cout << e ;
+   cout << endl;
+
+   return 0;
  }
