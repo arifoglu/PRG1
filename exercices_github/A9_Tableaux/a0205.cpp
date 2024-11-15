@@ -19,35 +19,29 @@ string to_string(const vector<int> & vec){
     result += "]";
     return result;
 }
-void supprimer_centre(vector<int> & vec){
-    if(vec.empty()) return;
 
-    // n elements de supprimer
-    size_t n = 2 - vec.size() % 2; 
-    
-    for(size_t i = 1 + vec.size() / 2 ; i < vec.size() ;++i){
-        vec[i - n] = vec[i];
+void supprimer_centre(vector<int> & vec){
+    if(vec.empty()){return;}
+    //nombre d'éléments à supprimer
+    // vec.size()%2 == cette expression verifie si la longeur du taille pair ou impair
+    int n = 2 - (vec.size() % 2);
+
+    for(size_t i = 1 + vec.size() / 2; i < vec.size() ;++i){
+        vec[ i - n] = vec[i];
     }
     vec.resize(vec.size() - n);
 }
-int main() {
 
-for (vector<int> v : {vector<int> 
-                        {} , 
+int main() {
+   for (vector<int> v : {vector<int>{},
                         {1},
                         {1, 2},
                         {1, 2, 3},
                         {1, 2, 3, 4},
                         {1, 2, 3, 4, 5},
-                        {1, 2, 3, 4, 5, 6}}) 
-    {
-      cout << to_string(v) << " -> " ;
-      
+                        {1, 2, 3, 4, 5, 6}}) {
+      cout << to_string(v) << " -> ";
       supprimer_centre(v);
-      
       cout << to_string(v) << endl;
    }
-
-
-   return 0;
 }
