@@ -50,5 +50,8 @@ int main(){
    
     string st3(string("Hello, World!"), 7);
     cout << st3 << endl; // World! 
+
+    string s9("sorunlar"s,3,1);
+    cout << s9 <<endl;
     return EXIT_SUCCESS;
 }
