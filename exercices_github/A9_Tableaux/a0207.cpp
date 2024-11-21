@@ -1,6 +1,6 @@
 
 /*
-Sans faire usage de vector::erase, écrire une fonction C++ qui supprime tous les éléments égaux à une valeur donnée. L'ordre des éléments non supprimés doit être préservé.
+Sans faire usage de vector::erase, écrire une fonction C++ qui supprime tout élément égal à l'élément qui les précède dans le vector. Avec la fonction to_string de l'exercice 02-03, le programme ci-dessous
 */
 #include <iostream>
 #include <vector>
@@ -18,27 +18,29 @@ string to_string(const vector<int> & vec){
     return result;
 }
 
-void supprimer_valeur(vector<int> & v,int val){
-      size_t write_idx = 0;
+void rendre_unique(vector<int> & v){
+    if(v.empty()){return;}
 
-      for(size_t read_idx = 0; read_idx < v.size() ; ++read_idx){
-        if(v[read_idx] != val){
-            v[write_idx] = v[read_idx];
-            ++write_idx;
+    size_t write_idx = 0;
+    for(size_t read_idx = 1; read_idx < v.size();++read_idx){
+        if(v[read_idx] != v[write_idx]){
+            v[++write_idx] = v[read_idx];
         }
-      }
-      v.resize(write_idx);  
+    }
+    v.resize(write_idx + 1);
 }
+
+
 
 int main() {
    for (vector<int> v: {vector<int>{},
                         {2},
                         {1, 2, 2, 2, 3, 1, 2, 4},
-                        {2, 3, 4, 3, 2, 1},
+                        {2, 3, 3, 2, 2, 1},
                         {2, 2, 2},
-                        {5, 4, 3, 2, 1, 2}}) {
+                        {5, 4, 4, 3, 2, 2, 2, 3}}) {
       cout << to_string(v) << " -> ";
-      supprimer_valeur(v,1);
+      rendre_unique(v);
       cout << to_string(v) << endl;
    }
 

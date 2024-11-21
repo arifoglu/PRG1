@@ -20,16 +20,16 @@ string to_string(const vector<int> & vec){
     return result;
 }
 
-void supprimer_centre(vector<int> & vec){
-    if(vec.empty()){return;}
-    //nombre d'éléments à supprimer
-    // vec.size()%2 == cette expression verifie si la longeur du taille pair ou impair
-    int n = 2 - (vec.size() % 2);
-
-    for(size_t i = 1 + vec.size() / 2; i < vec.size() ;++i){
-        vec[ i - n] = vec[i];
+void supprimer_centre(vector<int> & v){
+    if(v.empty()){
+        return;
     }
-    vec.resize(vec.size() - n);
+    size_t n = 2 - v.size() % 2 ;
+
+    for(size_t i = 1 + v.size() / 2 ; i < v.size() ;++i){
+        v[i - n ] = v [i];
+    }
+    v.resize(v.size() - n);
 }
 
 int main() {

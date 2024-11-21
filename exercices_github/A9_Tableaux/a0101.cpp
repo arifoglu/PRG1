@@ -26,10 +26,8 @@ int main() {
     //for(int e : a) cout << e << " \n"; // 000
 
     // no 5
-    array<string,3> a;
-    for(const string & e : a) cout << e.size() << ' '; // indeterminé
-
-
+    //array<string,3> a;
+    //for(const string & e : a) cout << e.size() << ' '; // indeterminé
 
     return EXIT_SUCCESS;
 }
