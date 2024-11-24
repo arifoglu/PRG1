@@ -11,7 +11,7 @@ On suppose que le compilateur utilise le modèle de donnée LLP64, i.e, avec int
 #include <cstdlib>
 using namespace std;
 
-int main() {
+int main(){ 
     auto v1 = 12u;
     cout << v1 << endl; // unsigned int v1 = 12
 
@@ -33,8 +33,8 @@ int main() {
     auto v7 = 0xEF;     
     cout << v7 << endl; // int v7 = 239
 
-    //auto v8 = 08;        
-    //cout << v8 << endl; // ne compile pas 8
+    ////auto v8 = 08;        
+    ////cout << v8 << endl; // ne compile pas 8
 
     auto v9 = 027;       
     cout << v9 << endl; // int v9 = 23
@@ -44,14 +44,14 @@ int main() {
 
     auto v11 = 0xffffffff;     
     cout << v11 << endl; // unsigned v11 = 4294967295 =>2^32 -1 
-    
+    //
     auto v12 = 0x7fffffff;     
     cout << v12 << endl; //  int v12 = 2147483647 => 2^31 -1 
 
     auto v13 = 0b010101; 
     cout << v13;  // int v13 = 21; 
-
-    auto v14 = 0b101ul; 
-    cout << v14; // unsigned long v14 = 5;
+//
+    //auto v14 = 0b101ul; 
+    //cout << v14; // unsigned long v14 = 5;
     return EXIT_SUCCESS;
 }

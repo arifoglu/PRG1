@@ -35,7 +35,7 @@ int main() {
     cout << v17 << endl; // double 1
 
     auto v18 = 0x1.8p+0f ;
-    cout << v18 <<endl; // double 24.2^15 
+    cout << v18 <<endl; // double (1 * 16^0 + 8 * 16^-1 ) * 2^0 
 
     auto v19 = 0x1.p-2L;
     cout << v19 << endl; // double => 0.25

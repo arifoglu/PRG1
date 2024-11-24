@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 int main() {
@@ -12,6 +13,7 @@ int main() {
     //getline(cin,str,'-');
     //cout << str << endl;
 
+
     ///////////// stringstream string 
     //stringstream in(" \n  \t Hello World !  ");
     //int i{};
@@ -19,7 +21,8 @@ int main() {
     //while(in >> s){
     //    cout << ++i << " : " << s << endl;
     //}
-    
+
+
     ///////////// stringstream char
     //stringstream in(" \n  \t Hello World !  ");
     //int i{};
@@ -66,7 +69,6 @@ int main() {
     //while(in.get(c))
     //cout << c ;
 
-
     //stringstream in("abcdefg");
     //char c;
     //in.get(c);
@@ -83,5 +85,26 @@ int main() {
     //while(in.get(c))
     //cout << c ;
 
+    int      a, b;
+   double   x, y;
+   char     c;
+   
+   cout << "entrer des valeurs : ";   
+   while(cin.get() != '\n');
+   cout << endl;
+   cin  >> a;
+   cin  >> b;
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+   cin  >> x;
+   cin  >> y;
+   cout << "voulez-vous sauver [o/n] : ";
+   cin  >> c;
+   cout << "sauver : " << c << endl;
+   cin  >> a;
+   cin  >> b;
+   cin  >> x;
+
+   cout << "presser ENTER pour quitter";
+   cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return EXIT_SUCCESS;
 }
