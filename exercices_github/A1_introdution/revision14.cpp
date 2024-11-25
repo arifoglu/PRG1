@@ -15,7 +15,6 @@ string to_string(span<const int> v){
     return result;
 }
 //void remplacer_valeurs_paires(span<int> v,int val){
-//    size_t write_idx = 0;
 //    for(size_t read_idx = 0; read_idx < v.size();++read_idx){
 //        if(v[read_idx] % 2 == 0){
 //            v[read_idx] = val;
@@ -129,18 +128,17 @@ int main() {
   // array a {1, 3, 2, 4, 2, 1, 3};
   // cout << to_string(a) << " -> " << to_string(ensemble(a)) << endl;
 
-  ////
-    for (vector<int> const& v:
-           {vector<int>{ 1, 2, 4, 1, 2, 5, 3, 6, 2, 1},
-            {1, 1, 1, 1, 1, 1},
-            {1, 2, 3, 4},
-            {1},
-            {}
-           })
-      cout << to_string(v) << " -> " << to_string(ensemble(v)) << endl;
-
-   array a {1, 3, 2, 4, 2, 1, 3};
-   cout << to_string(a) << " -> " << to_string(ensemble(a)) << endl;
+   ////
+   // for (vector<int> const& v:
+   //        {vector<int>{ 1, 2, 4, 1, 2, 5, 3, 6, 2, 1},
+   //         {1, 1, 1, 1, 1, 1},
+   //         {1, 2, 3, 4},
+   //         {1},
+   //         {}
+   //        })
+   //   cout << to_string(v) << " -> " << to_string(ensemble(v)) << endl;
+   //array a {1, 3, 2, 4, 2, 1, 3};
+   //cout << to_string(a) << " -> " << to_string(ensemble(a)) << endl;
 
     return EXIT_SUCCESS;
 }

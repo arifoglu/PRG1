@@ -68,7 +68,7 @@ int main() {
     //     << scientific << pi10 <<endl           // 3.141593e01
     //     << fixed << pi10 << endl              // 3.1415926
     //     << defaultfloat  << pi10 << endl      // 
-    //     << setprecision(4) << pi10 <<endl;   
+    //   << setprecision(4) << pi10 <<endl;   
 
     //11
     //int a = -12345;

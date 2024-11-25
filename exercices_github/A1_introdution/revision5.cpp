@@ -6,7 +6,7 @@ using namespace std;
 string milieu(string str);
 
 int main() {
-    //Ex: a0301
+
     string input ;
     cout << "Entrez un mot : ";
     cin >> input ;
