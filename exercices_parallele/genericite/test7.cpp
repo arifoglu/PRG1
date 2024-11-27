@@ -11,7 +11,7 @@ int main() {
 
     // chose(n);         // num I
     //chose(p);           // num I
-
+    chose(4.5);
     return EXIT_SUCCESS;
 }
 
