@@ -2,15 +2,15 @@
 #include <cstdlib>
 using namespace std;
 
-void sosie(int);
-void sosie(double);
+//void sosie(int);
+//void sosie(double);
 
 int main() {
-    char c; float y;
+    char c; float y = 3.6;
     
-    sosie(c);           // num I
-    sosie(y);           // num II
-    sosie('A');         // num I 
+    //sosie(c);           // num I
+    //sosie(y);           // num II
+    //sosie('A');         // num I 
 
     return EXIT_SUCCESS;
 }

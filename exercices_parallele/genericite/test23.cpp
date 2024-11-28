@@ -12,14 +12,14 @@ int main() {
     char c;
     int i ;
     double d;
-    f(c,d);             //  1
-    f(&c,d);            //  1 or 2 => 2 plus specialisé
-    //f(&c,&c);         //  Ambiguité 
-    f(d,d);             //  3 
-    //f(&i,&i);         //  Ambiguité
-    f(d,i);             //  1 or 4 => 4 plus specialisé
-    f(i,i);             //  3 or 5 => 5 plus specialisé
-    f(d,d);             //  3  
+    //f(c,d);             //  1
+    //f(&c,d);            //  1 or 2 => 2 plus specialisé
+    //f(&c,&c);           //  Ambiguité 
+    //f(d,d);             //  3 
+    //f(&i,&i);           //  Ambiguité
+    //f(d,i);             //  1 or 4 => 4 plus specialisé
+    //f(i,i);             //  3 or 5 => 5 plus specialisé
+    //f(d,d);             //  3  
     return 0;
 }
 

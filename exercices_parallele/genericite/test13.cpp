@@ -9,6 +9,7 @@ void f(T a, U b){
 int main() {
     f<double>(3.4,10) ;          // T = double, U = int    (U otomatik donustu)
     f<int>(7,3.4);               // T = int,    U = double (U otomatik donustu)
+    f<int>(8.4,3.6);             // T = int (8) U = double (U otomatik donustu)
 
     return 0;
 }

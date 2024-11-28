@@ -10,7 +10,7 @@ int main() {
     f(5);           // T = int
     f(3.16);        // T = double
     f('a');         // T = char    
-    
 
+    
     return 0;
 }

@@ -9,9 +9,9 @@ int main() {
     int n = 3;
     const int p = 5;
 
-    // chose(n);         // num I
+    //chose(n);         // num I
     //chose(p);           // num I
-    chose(4.5);
+    //chose(4.5);
     return EXIT_SUCCESS;
 }
 

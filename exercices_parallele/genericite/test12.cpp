@@ -12,7 +12,7 @@ int main() {
 
     //////////eger type yazilmazsa
     //f(5.5,10); //automatiqement    // T = double, U = int; 
-    //f<int,const char*>(3,"ABC");   // T = int   ; U = const char* 
+    //f(3,"ABC");                   // T = int   ; U = const char* 
 
 
     return 0;

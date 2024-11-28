@@ -10,7 +10,7 @@ T f(T a, U b){
 int main() {
     int x = 5;
     double y = 3.14;
-    f<double>(x,y);                // T = double , U = int
+    f<double>(x,y);                // T = double , U = double
     f<int>(x,y);                   // T = int ,    U = double
     return 0;
 }
