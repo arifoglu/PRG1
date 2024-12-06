@@ -2,24 +2,29 @@
 #include <cstdlib>
 using namespace std;
 
-class Date {
+class Point {
     private:
-        int jour,mois,annee;
-    public :
-        Date(int j, int m,int a){
-            this->jour = j;
-            this->mois = m;
-            this->annee = a;
-        }
+        int x, y ;
+    public:
+        Point(int abscisse, int ordonnee);
 
-    void affiche(){
-        cout << jour << mois << annee <<endl; 
-    }       
+        void affiche() const {
+            cout << "(" << x << "," << y << ")\n" ;
+        }    
 };
+Point::Point(int abscisse, int ordonnee){
+    x = abscisse;
+    y = ordonnee;
+}
+
 
 int main() {
-    Date date(24,1,1789);
-    date.affiche();
+    Point a(5,2);
+    a.affiche();
+    Point b{3,4};
+    b.affiche();
+    Point c = {7,8};
+    c.affiche();
 
     return EXIT_SUCCESS;
 }

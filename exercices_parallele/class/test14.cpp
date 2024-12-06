@@ -2,24 +2,26 @@
 #include <cstdlib>
 using namespace std;
 
-class C {
-    double d;
+class Test{
     public:
-        C(double _d) : d(_d){
-            cout << "d";
-        }
-        explicit C(int i ) : d(i) {
-            cout << "i";
-        }
-    void affiche(){
-        cout << d << endl;
-    }    
+        int num;
+
+        // constructor
+        Test(int) ; 
+
+        // destructor
+        ~Test();   
 };
 
-
+Test::Test(int n) : num(n) {
+    cout << "Appel constructeur num " << num << endl;
+}
+Test::~Test() {
+    cout << "Appel destructeur num  " << num << endl;
+}
 int main() {
-    C c1 = 2.3;
-    C c2 = 3;
+    Test a(1);
+    
 
     return EXIT_SUCCESS;
 }

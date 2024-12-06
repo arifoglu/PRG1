@@ -21,8 +21,5 @@ int main() {
     Point b{2,3};
     Point c = {7,8};
 
-
-
-    
     return EXIT_SUCCESS;
 }

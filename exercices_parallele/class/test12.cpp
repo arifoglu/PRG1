@@ -2,18 +2,20 @@
 #include <cstdlib>
 using namespace std;
 
-class Date {
+class Point {
     private:
-        int jour,mois,annee;
-    public :
-        Date(){}
-      
+        int x, y ;
+    public:
+        Point(int abscisse, int ordonnee) : x(abscisse) , y(ordonnee) {};
+
+        void affiche() const {
+            cout << "(" << x << "," << y << ")\n" ;
+        }    
 };
 
 int main() {
-    Date d1;
-    Date d2{};
-    Date d3 = Date();
+    Point a(5,2);
+    a.affiche();
 
     return EXIT_SUCCESS;
 }
