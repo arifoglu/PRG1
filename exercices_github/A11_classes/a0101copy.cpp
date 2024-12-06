@@ -4,15 +4,16 @@ using namespace std;
 
 struct Point{
     double x = 0, y = 0;
-    void afficher(){
-        cout << "(" << x << "," << y << ")\n";
-    }
-    void deplacer(double dx,double dy){
-        x += dx;
-        y += dy;
-    }
-
+    void afficher() const;
+    void deplacer(double,double);
 };
+void Point::afficher() const{
+    cout << "(" << x << "," << y << ")\n";
+}
+void Point::deplacer(double dx, double dy){
+    x += dx;
+    y += dy;
+}
 
 
 int main() {

@@ -4,40 +4,42 @@
 using namespace std;
 
 class Point{
-    private :
-        double x = 0.0 , y = 0.0;
-    public  :
-    
-        Point(){}
-        Point(double x,double y){
-            this->x = x;
-            this->y = y;
-        }
+    private:
+        double x, y;
+    public:
+        Point(double abs = 0, double ord = 0) : x(abs) , y(ord) {} ;   
 
-        void afficher(){
-                cout << "(" << x << "," << y << ")" <<endl;
-            }   
-        void deplacer(double dx, double dy){
-            x += dx;
-            y += dy;
-        }
+        double getX() const;
+        double getY() const;
 
-        //setX getX
-        void setX(double x){
-            this->x = x;
-        }
-        double getX() const {
-            return x;
-        }
+        void setX(double);
+        void setY(double);
 
-        // setY getY
-        void setY(double y){
-            this->y = y;
-        }
-        double getY() const {
-            return y;
-        }
+        void afficher() const;
+        void deplacer(double , double);
 };
+
+void Point::afficher() const{
+    cout << "(" << x << "," << y << ")\n";
+}
+void Point::deplacer(double dx, double dy){
+    x += dx;
+    y += dy;
+}
+
+double Point::getX() const{
+    return this->x;
+}
+double Point::getY() const{
+    return this->y;
+}
+void Point::setX(double x){
+    this->x = x;
+}
+void Point::setY(double y){
+    this->y = y;
+}
+
 
 int main() {
     Point centre;
