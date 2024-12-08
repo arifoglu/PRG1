@@ -18,6 +18,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <bitset>
+#include <compare>
 using namespace std;
 
 class Unsigned {
@@ -258,6 +259,14 @@ class Unsigned {
             return format_binaire >= autre.format_binaire;
         }
 
+        strong_ordering operator<=>(const Unsigned& autre)const {
+            if (format_binaire.size() < autre.format_binaire.size()) return  strong_ordering::less;
+            if (format_binaire.size() > autre.format_binaire.size()) return strong_ordering::greater;
+            if (format_binaire < autre.format_binaire) return  strong_ordering::less;
+            if (format_binaire > autre.format_binaire) return strong_ordering::greater;
+            return strong_ordering::equal;
+        }
+
         //Fibonacci
         Unsigned fibonacci(unsigned long long n) const {
             unsigned long long a = 0, b = 1;
@@ -273,11 +282,8 @@ class Unsigned {
 
             return Unsigned(to_string(result));  
         }    
-
-        //Affichage
-        void affiche() const {
-            cout << format_binaire <<endl;
-        }
+    
+        
 };
 
 int main() {
@@ -288,6 +294,7 @@ int main() {
     //un nombre en string
     Unsigned nombre3("1101");
 
+    /*
     //Comparaisons == != < > <= >=
     // Testing ==
     //if(nombre1 == nombre3){
@@ -402,6 +409,15 @@ int main() {
     // Tester Fibonacci
     // Unsigned fibonacciResult = nombre2.fibonacci(5); 
     // cout << "Fibonacci   : " << fibonacciResult << endl;
+    */
+
+    //Testing <=>
+    cout << "nombre1 == nombre3: " << (nombre1 == nombre3) << endl;
+    cout << "nombre1 != nombre3: " << (nombre1 != nombre3) << endl;
+    cout << "nombre1  < nombre3: " << (nombre1 < nombre3) << endl;
+    cout << "nombre1  > nombre3: " << (nombre1 > nombre3) << endl;
+    cout << "nombre1 <= nombre3: " << (nombre1 <= nombre3) << endl;
+    cout << "nombre1 >= nombre3: " << (nombre1 >= nombre3) << endl;
 
     return EXIT_SUCCESS;
 }
