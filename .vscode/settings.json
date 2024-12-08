@@ -56,5 +56,6 @@
         "span": "cpp",
         "charconv": "cpp",
         "forward_list": "cpp"
-    }
+    },
+    "commentTranslate.hover.enabled": true
 }
