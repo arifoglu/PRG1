@@ -24,142 +24,175 @@ using namespace std;
 
 
 int main() {
-    //un nombre en string 
-    Unsigned nombre1("1010");
-    //uint64_t 
-    Unsigned nombre2(8);
-    //un nombre en string
-    Unsigned nombre3("1101");
-
+    //1)Test des constructors
     /*
-    //Comparaisons == != < > <= >=
-    // Testing ==
-    //if(nombre1 == nombre3){
-    //    cout << "nombre1 et nombre3 sont egaux.\n";
-    //}else{
-    //    cout << "nombre1 et nombre3 ne sont pas egaux.\n";
-    //}
-    //if(nombre2 == nombre3){
-    //    cout << "nombre2 et nombre3 sont egaux.\n";
-    //}else{
-    //    cout << "nombre2 et nombre3 ne sont pas egaux.\n";
-    //}
-    
-    // Testing !=
-    //if(nombre1 != nombre3){
-    //    cout << "nombre1 et nombre3 ne sont pas egaux.\n";
-    //}else{
-    //    cout << "nombre1 et nombre3 sont egaux.\n";
-    //}
-    //if(nombre2 != nombre3){
-    //    cout << "nombre2 et nombre3 ne sont pas egaux.\n";
-    //}else{
-    //    cout << "nombre2 et nombre3 sont egaux.\n";
-    //}
+    try 
+    {
+        // Création d'objets Unsigned
+        // Binaire valide
+        Unsigned u1("1010");
+        // Entier uint64_t 
+        Unsigned u2(10);     
 
-    // Testing <
-    //if(nombre1 < nombre3){
-    //    cout << "nombre1 est plus petit que nombre3.\n";
-    //}else{
-    //    cout << "nombre1 n'est pas plus petit que nombre3.\n";
-    //}
-    //if(nombre2 < nombre3){
-    //    cout << "nombre2 est plus petit que  nombre3.\n";
-    //}else{
-    //    cout << "nombre2 n'est pas plus petit que nombre3.\n";
-    //}
+        // Affichage des représentations binaires
+        cout << "u1 (binaire): " << u1.get_format_binaire() << endl;
+        cout << "u2 (binaire): " << u2.get_format_binaire() << endl;
 
-    // Testing >
-    //if(nombre1 > nombre3){
-    //    cout << "nombre1 est plus grand que nombre3.\n";
-    //}else{
-    //    cout << "nombre1 n'est pas plus grand que nombre3.\n";
-    //}
-    //if(nombre2 > nombre3){
-    //    cout << "nombre2 est plus grand que nombre3.\n";
-    //}else{
-    //    cout << "nombre2 n'est pas plus grand que nombre3.\n";
-    //}
-   
-    // Testing <=
-    //if (nombre1 <= nombre3) {
-    //    cout << "nombre1 est plus petit ou égal à nombre3.\n";
-    //} else {
-    //    cout << "nombre1 n'est pas plus petit ou égal à nombre3.\n";
-    //}
-    //if (nombre2 <= nombre3) {
-    //    cout << "nombre2 est plus petit ou égal à nombre3.\n";
-    //} else {
-    //    cout << "nombre2 n'est pas plus petit ou égal à nombre3.\n";
-    //}
+        // Test avec une chaîne non valide
+        // Devrait lancer une exception
+        Unsigned u3("12"); 
 
-    // Testing >=
-    //if (nombre1 >= nombre3) {
-    //    cout << "nombre1 est plus grand ou égal à nombre3.\n";
-    //} else {
-    //    cout << "nombre1 n'est pas plus grand ou égal à nombre3.\n";
-    //}
-    //if (nombre2 >= nombre3) {
-    //    cout << "nombre2 est plus grand ou égal à nombre3.\n";
-    //} else {
-    //    cout << "nombre2 n'est pas plus grand ou égal à nombre3.\n";
-    //}
-    
-    //Operateurs + - += -=
-    // Testing +
-    //Unsigned resultat = nombre1 + nombre2;
-    //resultat.affiche();
-    
-    // Testing +=
-    //nombre1 += nombre2 ;
-    //nombre1.affiche();
-    
-    // Testing -
-    //Unsigned resultat = nombre2 - nombre1;
-    //resultat.affiche();
-    
-    // Testing -=
-    //nombre2 -= nombre1 ;
-    //nombre2.affiche();
-    
-    // Testing *
-    //Unsigned resultat = nombre1 * nombre3;
-    //resultat.affiche();
-    
-    // Testing *=
-    //nombre1 *= nombre3;
-    //nombre1.affiche();
-
-    // Testing /
-    //Unsigned resultat = nombre1 / nombre3;
-    //resultat.affiche();
-
-    // Testing %
-    //Unsigned resultat = nombre3 % nombre1;
-    //resultat.affiche();
-
-    // Testing <<
-    //cout << "Nombre1 en base 10: " << nombre1 << endl;
-    //cout << "Nombre2 en base 10: " << nombre2 << endl;
-    //cout << "Nombre3 en base 10: " << nombre3 << endl;
-
-    // Tester Fibonacci
-    Unsigned fibonacci_resultat = nombre2.fibonacci(8); 
-    cout << "Fibonacci de 8 : " << fibonacci_resultat << endl;
-    // Fibonacci(10)
-    fibonacci_resultat = nombre2.fibonacci(10); 
-    cout << "Fibonacci de 10 : " << fibonacci_resultat << endl;
-
+    } catch (const invalid_argument &e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
     */
-    
-    //Testing <=>
-    //cout << "nombre1 == nombre3: " << (nombre1 == nombre3) << endl;
-    //cout << "nombre1 != nombre3: " << (nombre1 != nombre3) << endl;
-    //cout << "nombre1  < nombre3: " << (nombre1 < nombre3) << endl;
-    //cout << "nombre1  > nombre3: " << (nombre1 > nombre3) << endl;
-    //cout << "nombre1 <= nombre3: " << (nombre1 <= nombre3) << endl;
-    //cout << "nombre1 >= nombre3: " << (nombre1 >= nombre3) << endl;
 
+    /////////////////////////////////////////////////
+    
+    //2) Tests des opérateurs de comparaison
+    /*
+
+    Unsigned u1("1010"); // Binaire valide  (10 en base 10)
+    Unsigned u2(10);     // Entier uint64_t (10 en base 10)
+    Unsigned u3("1100"); // Binaire valide  (12 en base 10)
+
+    // Comparaisons ==
+    cout << "u1 == u2 : " << (u1 == u2) << endl; 
+    cout << "u1 == u3 : " << (u1 == u3) << endl; 
+
+    // Comparaisons !=
+    cout << "u1 != u2 : " << (u1 != u2) << endl; 
+    cout << "u1 != u3 : " << (u1 != u3) << endl; 
+
+    // Comparaisons <
+    cout << "u1 < u3 : " << (u1 < u3) << endl;   
+    cout << "u3 < u1 : " << (u3 < u1) << endl;   
+
+    // Comparaisons >
+    cout << "u1 > u3 : " << (u1 > u3) << endl;   
+    cout << "u3 > u1 : " << (u3 > u1) << endl;   
+
+    // Comparaisons <=
+    cout << "u1 <= u2 : " << (u1 <= u2) << endl; 
+    cout << "u1 <= u3 : " << (u1 <= u3) << endl; 
+
+    // Comparaisons >=
+    cout << "u1 >= u2 : " << (u1 >= u2) << endl; 
+    cout << "u1 >= u3 : " << (u1 >= u3) << endl; 
+    */
+
+    /////////////////////////////////////////////////
+    
+    //3)les opérateurs += et-=
+    /*
+
+    Unsigned u1("1010");  // 10 en base 10
+    Unsigned u2("11");   //  3  en base 10
+
+    // Test de l'opérateur +=
+    cout << "u1 avant += : " << u1.get_format_binaire() << endl;
+    u1 += u2; // u1 = u1 + u2 (10 + 3 = 13)
+    cout << "u1 après += : " << u1.get_format_binaire() << endl; 
+
+    // Test de l'opérateur -=
+    cout << "u1 avant -= : " << u1.get_format_binaire() << endl;
+    u1 -= u2; // u1 = u1 - u2 (13 - 3 = 10)
+    cout << "u1 après -= : " << u1.get_format_binaire() << endl; 
+
+    // Test de soustraction qui devrait échouer
+    try {
+        Unsigned u3("1");
+        u3 -= u2; // Erreur attendue : Résultat négatif
+    } catch (const range_error &e) {
+        cerr << "Erreur attrapée : " << e.what() << endl;
+    }
+    */
+
+    /////////////////////////////////////////////////
+   
+    //4)les opérateurs d’addition et de soustraction
+    /*
+    
+    Unsigned u1("1010"); // 10 en base 10
+    Unsigned u2("11");   // 3  en base 10
+
+    // Test de l'opérateur +
+    Unsigned u3 = u1 + u2; // u3 = u1 + u2 (10 + 3 = 13)
+    cout << "u1 + u2 = " << u3.get_format_binaire() << endl; 
+
+    // Test de l'opérateur -
+    Unsigned u4 = u1 - u2; // u4 = u1 - u2 (10 - 3 = 7)
+    cout << "u1 - u2 = " << u4.get_format_binaire() << endl; 
+
+    // Test de soustraction qui devrait échouer
+    try {
+        Unsigned u5 = u2 - u1; // Erreur attendue : Résultat négatif
+    } catch (const range_error &e) {
+        cerr << "Erreur attrapée : " << e.what() << endl;
+    }
+    */
+
+    /////////////////////////////////////////////////
+    
+    //5)les opérateurs  *= , *
+    /*
+    Unsigned u1("1010"); // 10 en base 10
+    Unsigned u2("11");   // 3  en base 10
+
+    // Test de l'opérateur *
+    Unsigned u3 = u1 * u2; // u3 = u1 * u2 (10 * 3 = 30)
+    cout << "u1 * u2 = " << u3.get_format_binaire() << endl; 
+
+    // Test de l'opérateur *=
+    cout << "u1 avant *= : " << u1.get_format_binaire() << endl;
+    u1 *= u2; // u1 = u1 * u2 (10 * 3 = 30)
+    cout << "u1 après *= : " << u1.get_format_binaire() << endl; 
+    */
+
+    //////////////////////////////////////////////////
+   
+    //6)les opérateurs  / , %
+    /*
+    Unsigned u1("1010"); // 10 en base 10
+    Unsigned u2("11");   // 3  en base 10
+
+    // Test de l'opérateur /
+    Unsigned u3 = u1 / u2; // u3 = u1 / u2 (10 / 3 = 3)
+    cout << "u1 / u2 = " << u3.get_format_binaire() << endl; 
+
+    // Test de l'opérateur %
+    Unsigned u4 = u1 % u2; // u4 = u1 % u2 (10 % 3 = 1)
+    cout << "u1 % u2 = " << u4.get_format_binaire() << endl; 
+
+    // Test de division par zéro
+    try {
+        Unsigned u5("0");
+        Unsigned u6 = u1 / u5; 
+    } catch (const runtime_error &e) {
+        cerr << "Erreur attrapée : " << e.what() << endl;
+    }
+    */
+   
+    //////////////////////////////////////////////////
+    
+    //7)le calcul de factorielles et de nombres de Fibonacci
+    
+    // Test Fibonacci
+    cout << "Calcul des nombres de Fibonacci :" << endl;
+    for (unsigned int i = 0; i <= 10; ++i) {
+        Unsigned fib = Unsigned::fibonacci(i);
+        cout << "F(" << i << ") = " << fib.get_format_binaire()<< endl;
+    }
+
+    // Test Factorielle
+    cout << "\nCalcul des factorielles :" << endl;
+    for (unsigned int i = 0; i <= 10; ++i) {
+        Unsigned fact = Unsigned::factorielle(i);
+        cout << i << "! = " << fact.get_format_binaire() << endl;
+    }
+    
+
+    
     return EXIT_SUCCESS;
 }
 

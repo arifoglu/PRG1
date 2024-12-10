@@ -1,212 +1,290 @@
 #include "unsigned.hpp"
+#include <bitset>
 
-Unsigned::Unsigned() : format_binaire("0") {}
+using namespace std;
 
-// Constructor for string
-Unsigned::Unsigned(const std::string &binaire) : format_binaire(binaire) {}
+//1)
 
-// Constructor for uint64_t
+// Vérification si une chaîne est bien binaire
+bool Unsigned::est_binaire(const string &chaine) {
+    for (char c : chaine) {
+        if (c != '0' && c != '1') 
+        {// La chaîne n'est pas binaire
+            return false; 
+        }
+    }
+    return true;
+}
+
+// Constructeur : Crée un Unsigned à partir d'une chaîne binaire
+Unsigned::Unsigned(const string &binaire) {
+    if (!est_binaire(binaire)) {
+        // Lance une exception si la chaîne n'est pas binaire
+        throw invalid_argument("Chaîne non valide pour Unsigned");
+    }
+    format_binaire = binaire.empty() ? "0" : binaire;
+}
+
+// Constructeur : Crée un Unsigned à partir d'un entier uint64_t
 Unsigned::Unsigned(uint64_t nombre) {
-    format_binaire = std::bitset<64>(nombre).to_string();
+    // Convertit l'entier en binaire sous forme de chaîne
+    format_binaire = bitset<64>(nombre).to_string();
+    // Supprime les zéros inutiles à gauche
     format_binaire.erase(0, format_binaire.find_first_not_of('0'));
-    if (format_binaire.empty()) {
+    if (format_binaire.empty()) 
+    {
         format_binaire = "0";
     }
 }
 
-// Operator <<
-std::ostream &operator<<(std::ostream &out, const Unsigned &u) {
-    unsigned long long decimal = 0;
-    for (size_t i = 0; i < u.format_binaire.size(); ++i) {
-        decimal = decimal * 2 + static_cast<unsigned long long>(u.format_binaire[i] - '0');
-    }
-    out << decimal;
-    return out;
+// Retourne la représentation binaire
+string Unsigned::get_format_binaire() const {
+    return format_binaire;
 }
 
-// Operator +
-Unsigned Unsigned::operator+(const Unsigned &autre) const {
-    std::string resultat = "";
+//2)
+
+/////////////// Opérateurs de comparaison
+
+// Opérateur ==
+bool Unsigned::operator==(const Unsigned &autre) const {
+    return format_binaire == autre.format_binaire;
+}
+
+// Opérateur !=
+bool Unsigned::operator!=(const Unsigned &autre) const {
+    return format_binaire != autre.format_binaire;
+}
+
+// Opérateur <
+bool Unsigned::operator<(const Unsigned &autre) const {
+    if (format_binaire.length() != autre.format_binaire.length()) {
+        return format_binaire.length() < autre.format_binaire.length();
+    }
+    return format_binaire < autre.format_binaire;
+}
+
+// Opérateur >
+bool Unsigned::operator>(const Unsigned &autre) const {
+    if (format_binaire.length() != autre.format_binaire.length()) {
+        return format_binaire.length() > autre.format_binaire.length();
+    }
+    return format_binaire > autre.format_binaire;
+}
+
+// Opérateur <=
+bool Unsigned::operator<=(const Unsigned &autre) const {
+    return *this < autre || *this == autre;
+}
+
+// Opérateur >=
+bool Unsigned::operator>=(const Unsigned &autre) const {
+    return *this > autre || *this == autre;
+}
+
+//3)
+
+// Opérateur += : Addition bit à bit avec retenue
+Unsigned &Unsigned::operator+=(const Unsigned &autre) {
+    string result = "";
     int retenue = 0;
     size_t size1 = format_binaire.size();
     size_t size2 = autre.format_binaire.size();
-    size_t maxSize = std::max(size1, size2);
+    size_t maxSize = max(size1, size2);
 
     for (size_t i = 0; i < maxSize; ++i) {
         int bit1 = (i < size1) ? format_binaire[size1 - 1 - i] - '0' : 0;
         int bit2 = (i < size2) ? autre.format_binaire[size2 - 1 - i] - '0' : 0;
         int somme = bit1 + bit2 + retenue;
+
         retenue = somme / 2;
-        resultat = char('0' + (somme % 2)) + resultat;
+        result = char('0' + (somme % 2)) + result;
     }
     if (retenue) {
-        resultat = '1' + resultat;
+        result = '1' + result;
     }
-    if (resultat.empty()) {
-        resultat = "0";
-    }
-    return Unsigned(resultat);
+    format_binaire = result;
+    return *this;
 }
 
-// Operator -
-Unsigned Unsigned::operator-(const Unsigned &autre) const {
-    std::string resultat = "";
+// Opérateur -= : Soustraction bit à bit avec emprunt
+Unsigned &Unsigned::operator-=(const Unsigned &autre) {
+    if (*this < autre) {
+        throw range_error("Résultat négatif non autorisé pour Unsigned");
+    }
+
+    string result = "";
     int emprunt = 0;
     size_t size1 = format_binaire.size();
     size_t size2 = autre.format_binaire.size();
-    size_t maxSize = std::max(size1, size2);
+    size_t maxSize = max(size1, size2);
 
     for (size_t i = 0; i < maxSize; ++i) {
         int bit1 = (i < size1) ? format_binaire[size1 - 1 - i] - '0' : 0;
         int bit2 = (i < size2) ? autre.format_binaire[size2 - 1 - i] - '0' : 0;
-        int difference = bit1 - bit2 - emprunt;
 
-        if (difference < 0) {
-            difference += 2;
+        int diff = bit1 - bit2 - emprunt;
+
+        if (diff < 0) {
+            diff += 2;
             emprunt = 1;
         } else {
             emprunt = 0;
         }
-        resultat = char('0' + difference) + resultat;
+        result = char('0' + diff) + result;
     }
-    return Unsigned(resultat);
+
+    // Supprime les zéros inutiles
+    result.erase(0, result.find_first_not_of('0'));
+    format_binaire = result.empty() ? "0" : result;
+    return *this;
 }
 
-// Operator *
-Unsigned Unsigned::operator*(const Unsigned &autre) const {
+//4)
+
+// Opérateur + : Utilise l'opérateur += pour implémentation canonique
+Unsigned Unsigned::operator+(const Unsigned &autre) const {
+    // Crée une copie de l'objet courant
+    Unsigned temp = *this; 
+    // Utilise l'opérateur +=
+    temp += autre;        
+    // Retourne un nouvel objet
+    return temp;          
+}
+
+// Opérateur - : Utilise l'opérateur -= pour implémentation canonique
+Unsigned Unsigned::operator-(const Unsigned &autre) const {
+    // Crée une copie de l'objet courant
+    Unsigned temp = *this; 
+    // Utilise l'opérateur -=
+    temp -= autre;        
+   // Retourne un nouvel objet
+    return temp;          
+}
+
+//5)
+
+// Opérateur *= : Multiplication bit à bit avec addition et décalage
+Unsigned &Unsigned::operator*=(const Unsigned &autre) {
     Unsigned resultat("0");
-    Unsigned multiplicand = *this;
-    Unsigned multiplier = autre;
-    size_t size = multiplier.format_binaire.size();
+    string multiplicand = format_binaire;
+    string multiplier = autre.format_binaire;
 
-    for (size_t i = 0; i < size; ++i) {
-        if (multiplier.format_binaire[size - 1 - i] == '1') {
-            Unsigned multiplicand_decale = multiplicand;
-            for (size_t j = 0; j < i; ++j) {
-                multiplicand_decale.format_binaire += '0';
-            }
-            resultat += multiplicand_decale;
+    for (size_t i = 0; i < multiplier.size(); ++i) {
+        if (multiplier[multiplier.size() - 1 - i] == '1') {
+            // Décale le multiplicand à gauche par i bits
+            string multiplicand_decale = multiplicand + string(i, '0');
+            // Ajoute le multiplicand décalé au résultat
+            resultat += Unsigned(multiplicand_decale);
         }
     }
-    return resultat;
+
+    format_binaire = resultat.format_binaire;
+    return *this;
 }
 
-// Operator /
+// Opérateur * : Utilise l'opérateur *= pour implémentation canonique
+Unsigned Unsigned::operator*(const Unsigned &autre) const {
+    // Crée une copie de l'objet courant
+    Unsigned temp = *this; 
+    // Utilise l'opérateur *=
+    temp *= autre;        
+    // Retourne un nouvel objet
+    return temp;          
+}
+
+//6)
+
+// Opérateur / : Division avec quotient en base 2
 Unsigned Unsigned::operator/(const Unsigned &autre) const {
+    if (autre.format_binaire == "0") {
+        throw runtime_error("Division par zéro");
+    }
+
     Unsigned quotient("0");
-    Unsigned reste = *this;
-    Unsigned diviseur = autre;
+    Unsigned reste("0");
 
-    size_t taille = reste.format_binaire.size();
-    size_t taille_diviseur = diviseur.format_binaire.size();
+    for (char bit : format_binaire) {
+        // Décale le reste à gauche et ajoute le prochain bit
+        reste.format_binaire += bit;
+        // Supprime les zéros inutiles
+        reste.format_binaire.erase(0, reste.format_binaire.find_first_not_of('0'));
+        if (reste.format_binaire.empty()) {
+            reste.format_binaire = "0";
+        }
 
-    for (size_t i = 0; i < taille - taille_diviseur + 1; ++i) {
-        reste.format_binaire += '0';
-        if (reste >= diviseur) {
-            quotient.format_binaire += '1';
-            reste = reste - diviseur;
+        if (reste >= autre) {
+            // Soustrait le diviseur du reste
+            reste -= autre;
+            // Ajoute '1' au quotient
+            quotient.format_binaire += "1";
         } else {
-            quotient.format_binaire += '0';
+            // Ajoute '0' au quotient
+            quotient.format_binaire += "0";
         }
     }
+
+    // Supprime les zéros inutiles du quotient
     quotient.format_binaire.erase(0, quotient.format_binaire.find_first_not_of('0'));
     if (quotient.format_binaire.empty()) {
         quotient.format_binaire = "0";
     }
+
     return quotient;
 }
 
-// Operator %
+// Opérateur % : Retourne le reste de la division
 Unsigned Unsigned::operator%(const Unsigned &autre) const {
-    Unsigned reste = *this;
-    Unsigned diviseur = autre;
+    if (autre.format_binaire == "0") {
+        throw runtime_error("Division par zéro");
+    }
 
-    size_t taille = reste.format_binaire.size();
-    size_t taille_diviseur = diviseur.format_binaire.size();
+    Unsigned reste("0");
 
-    for (size_t i = 0; i < taille - taille_diviseur + 1; ++i) {
-        reste.format_binaire += '0';
-        if (reste >= diviseur) {
-            reste = reste - diviseur;
+    for (char bit : format_binaire) {
+        // Décale le reste à gauche et ajoute le prochain bit
+        reste.format_binaire += bit;
+        // Supprime les zéros inutiles
+        reste.format_binaire.erase(0, reste.format_binaire.find_first_not_of('0'));
+        if (reste.format_binaire.empty()) {
+            reste.format_binaire = "0";
+        }
+
+        if (reste >= autre) {
+            // Soustrait le diviseur du reste
+            reste -= autre;
         }
     }
-    reste.format_binaire.erase(0, reste.format_binaire.find_first_not_of('0'));
-    if (reste.format_binaire.empty()) {
-        reste.format_binaire = "0";
-    }
+
     return reste;
 }
 
-// Operator +=
-Unsigned &Unsigned::operator+=(const Unsigned &autre) {
-    *this = *this + autre;
-    return *this;
-}
-
-// Operator -=
-Unsigned &Unsigned::operator-=(const Unsigned &autre) {
-    *this = *this - autre;
-    return *this;
-}
-
-// Operator *=
-Unsigned &Unsigned::operator*=(const Unsigned &autre) {
-    *this = *this * autre;
-    return *this;
-}
-
-// Comparison operators
-bool Unsigned::operator==(const Unsigned &autre) const {
-    return format_binaire == autre.format_binaire;
-}
-
-bool Unsigned::operator!=(const Unsigned &autre) const {
-    return format_binaire != autre.format_binaire;
-}
-
-bool Unsigned::operator<(const Unsigned &autre) const {
-    return format_binaire < autre.format_binaire;
-}
-
-bool Unsigned::operator>(const Unsigned &autre) const {
-    return format_binaire > autre.format_binaire;
-}
-
-bool Unsigned::operator<=(const Unsigned &autre) const {
-    return format_binaire <= autre.format_binaire;
-}
-
-bool Unsigned::operator>=(const Unsigned &autre) const {
-    return format_binaire >= autre.format_binaire;
-}
-
-// Operator <=>
-std::strong_ordering Unsigned::operator<=>(const Unsigned &autre) const {
-    if (format_binaire.size() < autre.format_binaire.size())
-        return std::strong_ordering::less;
-    if (format_binaire.size() > autre.format_binaire.size())
-        return std::strong_ordering::greater;
-    if (format_binaire < autre.format_binaire)
-        return std::strong_ordering::less;
-    if (format_binaire > autre.format_binaire)
-        return std::strong_ordering::greater;
-    return std::strong_ordering::equal;
-}
-
-// Fibonacci
-Unsigned Unsigned::fibonacci(unsigned long long n) const {
+//7)
+// fibonacci
+Unsigned Unsigned::fibonacci(unsigned int n) {
     if (n == 0) return Unsigned("0");
     if (n == 1) return Unsigned("1");
 
     Unsigned a("0"); // F(0)
     Unsigned b("1"); // F(1)
 
-    for (unsigned long long i = 2; i <= n; ++i) {
-        Unsigned temp = b;   
-        b = a + b;          
-        a = temp;            
+    for (unsigned int i = 2; i <= n; ++i) {
+        Unsigned temp = b;
+        // F(n) = F(n-1) + F(n-2)
+        b += a; 
+        a = temp;
     }
+
     return b;
 }
 
+// factorielle
+Unsigned Unsigned::factorielle(unsigned int n) {
+    Unsigned resultat("1");
 
+    for (unsigned int i = 2; i <= n; ++i) {
+        resultat *= Unsigned(i);
+    }
+
+    return resultat;
+}
