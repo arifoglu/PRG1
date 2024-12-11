@@ -41,39 +41,32 @@ class Point{
 
 };
 
-int main () {
-    cout << "p1       : ";
-    Point<int> p1("p1"s);
-    p1.afficher();
-    cout << endl;
+template<typename T>
+void listerPoints(const vector<Point<T>>& v){
+    for(const Point<T>& p : v){
+        p.afficher();
+        cout << endl;
+    }
+}
 
-    cout << "p2       : ";
-    Point<double> p2("p2"s, Coord(1.2, 3.4));
-    p2.afficher();
-    cout << endl;
-    
-    cout << "p3       : ";
-    Point<double> p3("p3"s, 1.2, 3.4);
-    p3.afficher();
-    cout << endl;
-    
-    cout << "p3.1     : ";
-    p3.setNom("p3.1"s);
-    p3.afficher();
-    cout << endl;
-    
-    cout << "p1(-1, 1): ";
-    p1.setCoord(Coord(-1, 1));
-    p1.afficher();
-    cout << endl;
-    
-    cout << "p1->     : ";
-    p1.deplacer(-1, 1);
-    p1.afficher();
-    cout << endl;
-    
-    cout << "p1(x)    : ";
-    cout << p1.getNom() << " " << p1.getCoord().getX();
+int main () {
+vector<Point<int>> dessin {{"p1",  1,  2},
+                           {"p2",  4,  2},
+                           {"p3",  9,  8},
+                           {"p4", -1,  5},
+                           {"p5",  3, -1},
+                           {"p6",  7,  0}};
+
+    listerPoints(dessin);
+
+   int dx = 1;
+   int dy = 2;
+   for_each(dessin.begin(), dessin.end(),
+            [dx, dy](Point<int>& p){ p.deplacer(dx, dy); });
+   cout << endl;
+   
+   listerPoints(dessin);
+
     return EXIT_SUCCESS;
 }
 //afficher Point
