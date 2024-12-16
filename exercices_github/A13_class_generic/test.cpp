@@ -2,56 +2,36 @@
 #include <string>
 using namespace std;
 
-class Adres{
+template <typename T>
+class Point{
     private:
-        string sokak;
-        int numara;
+        T x, y;
     public:
-        Adres(string sokak,int numara) : sokak(sokak), numara(numara){}
-
-        string getSokak() const{ return sokak;}
-        int getNumara() const { return numara;}
-
-        void setAdres(string yeniSokak,int yeniNumara){
-            sokak = yeniSokak;
-            numara = yeniNumara;
-        }    
-        void yazdir()const{
-            cout << sokak << " " << numara;
-        }
+        Point(T abs , T ord);
+        void deplace(T dx, T dy);
+        void affiche()const; 
 };
-
-class Kisi{
-    private:
-        string isim;
-        Adres adres;
-    public:
-        Kisi(string isim, Adres adres) : isim(isim), adres(adres){}
-
-        string getIsim()const {return isim;}
-        Adres getAdres()const {return adres;}  
-
-        void setIsim(string yeniIsim){
-            isim = yeniIsim;
-        }  
-        void setAdres(Adres yeniAdres){
-            adres = yeniAdres;
-        }
-        void yazdir() const {
-        cout << "İsim: " << isim << ", Adres: ";
-        adres.yazdir();
-    }
-};
+template<typename T>
+Point<T>::Point(T abs ,T ord){
+    x = abs;
+    y = ord;
+}
+template<typename T>
+void Point<T>::deplace(T dx,T dy){
+    x += dx;
+    y += dy;
+}
+template<typename T>
+void Point<T>::affiche() const{
+    cout << "(" << x << ","<< y << ")" <<endl;
+}
 
 int main(){
-    Adres adres("cicek",12);
-    Kisi kisi("Ahmet",adres);
+    Point<int> p(3,6);
+    p.affiche();
 
-    kisi.yazdir();
-    cout << endl;
-
-    adres.setAdres("gul",34);
-    kisi.setAdres(adres);
+    Point<double> p2(3.5,6.8);
+    p2.affiche();
 
     return EXIT_SUCCESS;
 }
