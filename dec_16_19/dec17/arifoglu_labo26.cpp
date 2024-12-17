@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <stdexcept>
 #include "unsigned.hpp"
 #include "Int.hpp"
 using namespace std;
@@ -22,15 +23,162 @@ using namespace std;
 
 int main() {
 
-    Int i1;
-    cout << "i1 (par défaut)                : " << i1 <<endl;
-    Int i2(34);
-    cout << "i2 (constructor positif)       : " << i2 <<endl;
-    Int i3(-34);
-    cout << "i3 (constructor negatif)       : " << i3 <<endl;
-    Int i4("12345");
-    cout << "i4 (constructor string positif): " << i4 << endl;
-  
+    /*
+    Les résultats sont obtenus grâce aux constructeurs de la classe. Le constructeur par défaut initialise la valeur absolue à zéro et indique que le nombre n’est pas négatif. Les constructeurs pour les entiers et les chaînes analysent respectivement le signe et le contenu pour déterminer si le nombre est négatif, tout en attribuant la valeur absolue correspondante.
+    */
+    //1)Constructors 
+    /*
+    try {
+        Int i1; // Constructeur par défaut
+        cout << "i1: " << i1 << endl;
+        // Nombre positif
+        Int i2(12345); 
+        cout << "i2: " << i2 << endl;
+        // Nombre négatif
+        Int i3(-6789); 
+        cout << "i3: " << i3 << endl;
+        // Chaîne négative
+        Int i4("-12345"); 
+        cout << "i4: " << i4 << endl;
+        // Chaîne positive
+        Int i5("6789"); 
+        cout << "i5: " << i5 << endl;
+    } catch (const exception &e) {
+        cerr << "Erreur: " << e.what() << endl;
+    }
+    */
+
+   //2)opérateurs comparaison && arithmétiques
+   /*
+    Int i1(15);
+    Int i2(-10);
+
+    // Test des opérateurs de comparaison
+    cout << "i1 == i2: " << (i1 == i2) << endl;
+
+    // Test de !=
+    cout << "i1 != i2: " << (i1 != i2) << endl;
+
+    // Test de <
+    cout << "i1 < i2 : " << (i1 < i2) << endl;
+
+    // Test de >
+    cout << "i1 > i2 : " << (i1 > i2) << endl;
+
+    // Test de <=
+    cout << "i1 <= i2: " << (i1 <= i2) << endl;
+
+    // Test de >=
+    cout << "i1 >= i2: " << (i1 >= i2) << endl;
+
+    //Test des opérateurs arithmétiques
+    // Test de +=
+    i1 += i2;
+    cout << "i1 += i2: " << i1 << endl;
+
+    // Test de -=
+    i1 -= i2;
+    cout << "i1 -= i2: " << i1 << endl;
+
+    // Test de *=
+    i1 *= i2;
+    cout << "i1 *= i2: " << i1 << endl;
+    */
+
+   //3)Opérateurs arithmétiques + - * / %
+   /*
+    Int i1(10);
+    Int i2(-5);
+
+    cout << "Test des opérateurs arithmétiques (de façon canonique)" << endl;
+
+    try {
+        Int somme = i1 + i2;
+        cout << "i1 + i2 = " << somme << endl;
+
+        Int difference = i1 - i2;
+        cout << "i1 - i2 = " << difference << endl;
+
+        Int produit = i1 * i2;
+        cout << "i1 * i2 = " << produit << endl;
+
+        Int quotient = i1 / i2;
+        cout << "i1 / i2 = " << quotient << endl;
+
+        Int modulo = i1 % i2;
+        cout << "i1 % i2 = " << modulo << endl;
+
+    } catch (const std::exception &e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
+    */
+
+   //4)Opérateurs d'incrémentation et de décrémentation
+   /*
+    Int i1(5);
+    Int i2(-5);
+
+    cout << "Test des opérateurs d'incrémentation et de décrémentation" << endl;
+
+    cout << "i1 avant ++ : " << i1 << endl;
+    ++i1;
+    cout << "i1 après ++ : " << i1 << endl;
+
+    cout << "i1 avant -- : " << i1 << endl;
+    --i1;
+    cout << "i1 après -- : " << i1 << endl;
+
+    cout << "i2 avant ++ : " << i2 << endl;
+    ++i2;
+    cout << "i2 après ++ : " << i2 << endl;
+
+    cout << "i2 avant -- : " << i2 << endl;
+    --i2;
+    cout << "i2 après -- : " << i2 << endl;
+     */
+
+    //5)fibonacci et factorielle
+    /*
+    // Test fibonacci
+     for (unsigned int i = 0; i <= 10; ++i) {
+        try {
+            Int fib = Int::fibonacci(i);
+            cout << "Fibonacci(" << i << ") = " << fib << endl;
+        } catch (const exception &e) {
+            cerr << "Erreur Fibonacci(" << i << ") : " << e.what() << endl;
+        }
+    }
+
+    // Test Factorielle
+    for (unsigned int i = 0; i <= 10; ++i) {
+        try {
+            Int fact = Int::factorielle(i);
+            cout << i << "! = " << fact << endl;
+        } catch (const exception &e) {
+            cerr << "Erreur Factorielle(" << i << ") : " << e.what() << endl;
+        }
+    }
+    */
+
+    //6)affichage ios_base
+    /*
+    //
+    Int positif(123);
+    Int negatif(-456);
+
+    // Afficher les nombres positifs 
+    cout.setf(ios::showpos);
+    cout << "Positif : " << positif << endl;
+
+    // Afficher les nombres négatifs
+    cout.unsetf(ios::showpos);
+    cout << "Négatif : " << negatif << endl;
+
+    // Afficher 
+    cout.width(10);
+    cout << "Affichage avec largeur : " << positif << endl;
+    */
+
     return EXIT_SUCCESS;
 }
 

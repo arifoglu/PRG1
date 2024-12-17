@@ -3,23 +3,55 @@
 
 #include "unsigned.hpp"
 #include <iostream>
-#include <stdexcept>
-#include <sstream>
 #include <string>
 using namespace std;
 
 class Int{
     private:
-        bool negatif;
-        Unsigned valeur_absolue;
-    public:
+        //La valeur absolue du nombre
+        Unsigned valeur_absolue;  
+        //Indique si le nombre est negatif
+        bool est_negatif;
+    public: 
+        //Constructors   
         Int();
-        explicit Int(int64_t valeur);
-        explicit Int(const string& valeur);
+        explicit Int(int nombre);
+        explicit Int(const string& str);
 
-        string to_string()const;
+        //operator <<
+        friend ostream& operator<<(ostream& os,const Int & i);
 
-        friend ostream& operator<<(ostream& os,const Int& i);
+        //operator de comparaison
+        bool operator==(const Int &autre) const;
+        bool operator!=(const Int &autre) const;
+        bool operator< (const Int &autre) const;
+        bool operator> (const Int &autre) const;
+        bool operator<=(const Int &autre) const;
+        bool operator>=(const Int &autre) const;
+
+        //Opérateurs d'affectation arithmétique
+        Int &operator+=(const Int &autre);
+        Int &operator-=(const Int &autre);
+        Int &operator*=(const Int &autre);
+
+        //// Opérateurs arithmétiques (de façon canonique)
+        Int operator+(const Int &autre) const; 
+        Int operator-(const Int &autre) const; 
+        Int operator*(const Int &autre) const; 
+        
+        // Opérateurs de division et modulo
+        Int operator/(const Int &autre) const;
+        Int operator%(const Int &autre) const; 
+
+        // Opérateurs d'incrémentation et de décrémentation
+        Int &operator++();        // Pré-incrémentation  (++i)
+        Int &operator--();        // Pré-décrémentation  (--i)
+        Int operator++(int);      // Post-incrémentation (i++)
+        Int operator--(int);      // Post-décrémentation (i--)
+
+        static Int fibonacci(unsigned int n);
+        static Int factorielle(unsigned int n);
 };
+
 
 #endif
