@@ -1,8 +1,10 @@
-#ifndef UNSIGNED_H
-#define UNSIGNED_H
+#ifndef UNSIGNED_HPP
+#define UNSIGNED_HPP
 
 #include <string>
 #include <stdexcept>
+#include <cstdint>
+#include "Setbase.hpp"
 using namespace std;
 
 class Unsigned {
@@ -13,12 +15,21 @@ class Unsigned {
         static bool est_binaire(const string &chaine);
 
     public:
+        
         // Constructors
+         Unsigned();
         // En format chaîne binaire
         explicit Unsigned(const string &binaire); 
         // uint64_t entier
-        explicit Unsigned(uint64_t nombre);            
-
+         Unsigned(uint64_t nombre);            
+        explicit Unsigned(int nombre); 
+        
+         ////   
+         explicit operator uint64_t() const;
+         Unsigned &operator=(uint64_t nombre);
+         Unsigned& operator=(const std::string &binaire);
+         Unsigned &operator+=(uint64_t autre);
+        
         // Opérateurs de comparaison
         bool operator==(const Unsigned &autre) const;
         bool operator!=(const Unsigned &autre) const;
@@ -61,17 +72,11 @@ class Unsigned {
         // Post-décrémentation (i--) 
         Unsigned operator--(int);  
 
-        // Classe Setbase
-        class Setbase {
-            public:
-                static void set_base(int base);
-                static int base_affichage; // par défaut 10
-        };
-
         // Opérateur <<
         friend ostream &operator<<(ostream &os, const Unsigned &u);
 
 };
 
-
 #endif
+
+
