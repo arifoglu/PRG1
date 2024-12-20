@@ -27,7 +27,7 @@ int main() {
     p.affiche();            // (3,0)
 
     Point q(5.5,6);         // conversion implicit double => int
-    q.affiche();            // (5,0)
+    q.affiche();            // (5,6)
 
     Point r{6};             // 
     r.affiche();            // (6,0)
@@ -48,6 +48,8 @@ int main() {
 
     q = p % q;             // Point(3,0) % (5.5,6) 
     q.affiche();           // (0,0) 
+
+    
 
 
     return EXIT_SUCCESS;
