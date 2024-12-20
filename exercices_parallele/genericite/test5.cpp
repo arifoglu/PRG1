@@ -13,9 +13,9 @@ int main(){
     
     //essai(n,z);         // num I
     //essai(c,z);         // num I
-    //essai(n,p);         // error
-    //essai(c,c);         // error
-    //essai(z,z);         // error
+    //essai(n,p);         // error  sadece tek fonk olsaydi donusum olurdu ama 2 fonk ayni duzeyde.(ambigue)
+    //essai(c,c);         // error  sadece tek fonk olsaydi donusum olurdu ama 2 fonk ayni duzeyde.(ambigue)
+    //essai(z,z);         // error  sadece tek fonk olsaydi donusum olurdu ama 2 fonk ayni duzeyde.(ambigue)
     //essai(z,c);         // num II
 
 

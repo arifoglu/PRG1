@@ -2,8 +2,8 @@
 #include <cstdlib>
 using namespace std;
 
-//void sosie(int);
-//void sosie(double);
+void sosie(int);
+void sosie(double);
 
 int main() {
     char c; float y = 3.6;

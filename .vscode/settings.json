@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.ejs": "html",
         "iostream": "cpp",
         "ostream": "cpp",
         "memory": "cpp",
@@ -55,7 +56,8 @@
         "algorithm": "cpp",
         "span": "cpp",
         "charconv": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "list": "cpp"
     },
     "commentTranslate.hover.enabled": true
 }

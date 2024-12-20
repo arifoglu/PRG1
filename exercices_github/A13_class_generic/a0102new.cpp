@@ -3,51 +3,8 @@
 #include <string>
 using namespace std;
 
-//class Coord
-template<typename T>
-class Coord{
-    private:
-        T x, y;
-    public:
-        Coord(T abs = 0, T ord = 0);
-        void afficher()const;    
-};
-template<typename T>
-Coord<T>::Coord(T abs, T ord) : x(abs), y(ord){}
 
-template<typename T>
-void Coord<T>::afficher()const{
-    cout << "(" << x << "," << y << ")";
-}
 
-//class Point
-template<typename T>
-class Point{
-    private:
-        string nom;
-        Coord<T> coord;
-    public:
-        Point(const string& name = "origin");
-        Point(const string& nom,Coord<T> coord);
-        Point(const string&nom, double a,double b);
-
-        void afficher()const;    
-
-};
-template<typename T>
-Point<T>::Point(const string& name ) : nom(name) {};
-
-template<typename T>
-void Point<T>::afficher()const{
-    cout << nom;
-    coord.afficher();
-}
-
-template<typename T>
-Point<T>::Point(const string& nom,double a, double b){  
-    coord.x = a;
-    coord.y = b;
-}
 int main () {
     const Point<int> origin;
 
@@ -56,10 +13,10 @@ int main () {
     p1.afficher();
     cout << endl;
 
-    cout << "p2       : ";
-    Point<double> p2("p2"s, Coord(1.2, 3.4));
-    p2.afficher();
-    cout << endl;
+    //cout << "p2       : ";
+    //Point<double> p2("p2"s, Coord(1.2, 3.4));
+    //p2.afficher();
+    //cout << endl;
     
     //cout << "p3       : ";
     //Point<double> p3("p3"s, 1.2, 3.4);
