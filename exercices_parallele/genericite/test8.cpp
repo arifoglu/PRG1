@@ -12,7 +12,7 @@ int main() {
     //chose(n);          // num I
     //chose(2);          // num II
     //chose(x);          // num II
-    //chose(2*n + 1);      // num II
+    //chose(2*n + 1);    // num II
 
     return EXIT_SUCCESS;
 }
