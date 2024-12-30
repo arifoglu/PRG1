@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Fonksiyon tanımlamaları
 void f(int a, float b)                  { cout << "1" << endl; }
 void f(float a, int b)                  { cout << "2" << endl; }
 void f(int &a, char b, double c = 5.0)  { cout << "3" << endl; }
@@ -15,16 +14,17 @@ int main() {
     double y = 3.0;
 
     
-    //f(i, c);      // 3
-    //f(c, i);      // 1, 2, 3, 5 -> conflict (ambiguous error)
-    //f(i, i);      // 2
-    //f(i, x);      // 1
-    //f(c, x);      // 2
-    //f(x, i);      // 2
-    //f(x, x);      // 5
-    //f(i, y);      // 1, 2, 3, 5 -> conflict (ambiguous error)
-    //f(x, y);      // 5
-    //f(y, y);      // 1, 2, 3, 5 -> conflict (ambiguous error)
+    //f(i, c);      
+    //f(c, i);      
+    //f(i, i);      
+    //f(x, c);      
+    //f(c, x);      
+    //f(x, x);      
+    //f(i, x);      
+    //f(x, i);      
+    //f(i, y);      
+    //f(y, i);      
+    //f(y, y);      
 
     return 0;
 }
