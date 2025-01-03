@@ -108,11 +108,11 @@ int main() {
     //for(int e : v) cout << e << " " ;
     //cout << endl;
 
-    vector<int> w1{1,2,3,4,5,6};
-    vector<int> v(w1.size());
-    auto it = remove_copy_if(w1.begin(),w1.end(),v.begin(),is_odd);
-    v.erase(it,v.end());
-    for(int e : v) cout << e << " " ;
+    //vector<int> w1{1,2,3,4,5,6};
+    //vector<int> v(w1.size());
+    //auto it = remove_copy_if(w1.begin(),w1.end(),v.begin(),is_odd);
+    //v.erase(it,v.end());
+    //for(int e : v) cout << e << " " ;
 
     //string str("abcdefg",5);
     //string s(string(str,3)+str);
