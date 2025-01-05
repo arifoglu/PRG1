@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class C {
@@ -17,11 +18,11 @@ int main() {
     //  a[0] = a[1];
     //  cout << " / " ;
 
-    //  C c(1);
-    //  std::vector<C> v;
-    //  v.reserve(2);
-    //  v.push_back(c);
-    //  cout << " / " ;
+    //C c(1);
+    //vector<C> v;
+    //v.reserve(2);
+    //v.push_back(c);
+    //cout << " / " ;
     
     //C c(1);
     //{

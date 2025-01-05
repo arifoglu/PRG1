@@ -2,11 +2,11 @@
 #include <string.h>
 using namespace std;
 
-//void f(const int&)    { cout << "1"; } 
-//void f(int&)          { cout << "2"; } 
-//void f(unsigned long) { cout << "3"; } 
-//void f(double const&) { cout << "4"; } 
-//void f(bool)          { cout << "5"; }
+void f(const int&)    { cout << "1"; } 
+void f(int&)          { cout << "2"; } 
+void f(unsigned long) { cout << "3"; } 
+void f(double const&) { cout << "4"; } 
+void f(bool)          { cout << "5"; }
 
 int main() {
     //f(42);
