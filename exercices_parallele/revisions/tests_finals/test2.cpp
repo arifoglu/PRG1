@@ -8,7 +8,7 @@ char& premier_e(string& str){
             return str[i];
         }
     }
-    return str[str.length() - 1];
+    return str[str.size() - 1];
 }
 
 int main() { 

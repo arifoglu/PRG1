@@ -18,7 +18,7 @@ double apply_op(double a, double b, char c){
         case '*' :return a * b; break;   
         case '+' :return a + b; break;  
         case '-' :return a - b; break;  
-        case '/' :return a / b; break;
+        case '/' :return (b != 0 ? a/b : 0/0.); break;
         default : return 0/0.0; break;
     }
 } 
