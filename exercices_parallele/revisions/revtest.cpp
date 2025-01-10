@@ -1,18 +1,16 @@
 #include <iostream>
-#include <iomanip>
+#include <string>
 using namespace std;
 
-void afficher(string const& str){
-    for(size_t i = 0; i < str.size();++i){
-        cout << string(i, ' ') << str.substr(0,str.size() - i )<<endl;
-    }
+string lettres_majuscules_de(string const& str){
+    string resultat = "";
+    for(size_t e : str)
+        if(e >= 'A' && e <= 'Z')
+            resultat += e;
+    return resultat;
 }
 
-int main() {
-    afficher("hello");
-
-    return 0;
+int main() { 
+   cout << lettres_majuscules_de("Hello, World !") << endl 
+        << lettres_majuscules_de("AbCDefgHIJklmnoP") << endl; 
 }
-
-
-

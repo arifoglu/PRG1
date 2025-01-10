@@ -80,13 +80,6 @@ bool est_dans_quadrant(Point<T> const& p){
     }
 }
 
-template<typename T>
-void listerPoints(const vector<Point<T>>& v){
-    for(const Point<T>& p : v){
-        p.afficher();
-        cout << endl;
-    }
-}
 
 int main(){
     vector<Point<int>> dessin {{"p1",  1,  2},
@@ -97,12 +90,5 @@ int main(){
                                {"p6",  7,  0}};
     cout << count_if(dessin.begin(),dessin.end(),est_dans_quadrant<int,Quadrant::I>);
     
-    listerPoints(dessin);
-
-    int dx = 10;
-    int dy = 20;
-    for_each(dessin.begin(),dessin.end(),[dx,dy](Point<int>& p){
-        p.deplacer(dx,dy);
-    });
     return EXIT_SUCCESS;
 }
