@@ -16,4 +16,4 @@ int main() {
 //catch(const exception) => hata turunu bilmedigin zaman
 //catch(...)             => genel hata yakalamak icin
 
-//catch(const exception& e)=>catch blogunda & kullanimi gereksiz kopyalamay onler
+//catch(const exception& e)=>catch blogunda & kullanimi gereksiz kopyalamayi onler

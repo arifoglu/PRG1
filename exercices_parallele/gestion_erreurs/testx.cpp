@@ -1,35 +1,22 @@
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
-class Vect{
-    int nelem;
-    int* adr;
-    public:
-        Vect(int);
-        ~Vect();
-        int& operator[](int);
+struct A{
+    int i;
+    ~A() {cout << "D(" << i << ") ";}
 };
 
-class Vect_limite{};
+void g(){A a{1}; throw exception();}
 
-Vect::Vect (int n) : nelem(n), adr(new int [n]){}
-Vect::~Vect() {delete[] adr;}
-int& Vect::operator[](int i){
-    if(i < 0 || i >= nelem){
-        Vect_limite limite;
-        throw (limite);
-    }
-    return adr[i];
-}
+void f(){A a{2}; g();}
 
 int main() {
     try{
-        Vect v(10);
-        v[9] = 5;
+        A a1{3};f();
     }
-    catch(Vect_limite limite){
-        cerr << "indice incorrect!!!\n";
-        exit (-1);
+    catch(int& e){
+        cout << "catch";
     }
-
+    cout << "fin " << endl;
 }
