@@ -27,41 +27,52 @@ Exercer l’utilisation d’exceptions
 #include "Int.hpp"
 #include "Setbase.hpp"
 #include "unsigned.hpp"
+
 using namespace std;
+
+// verification 
+template<typename T>
+bool verifierSolution(const Matrice<T>& matrice, const T* solution, int lignes, int colonnes) {
+    bool valide = true;
+    for (int i = 0; i < lignes; i++) {
+        T somme = 0;
+        for (int j = 0; j < colonnes - 1; j++) {
+            somme += matrice.getValeur(i, j) * solution[j];
+        }
+        if (somme != matrice.getValeur(i, colonnes - 1)) {
+            cout << "Erreur : Ligne " << i + 1 << " n'est pas valide." << endl;
+            cout << "Somme calculée : " << somme << ", b attendu : " << matrice.getValeur(i, colonnes - 1) << endl;
+            valide = false;
+        }
+    }
+    return valide;
+}
 
 int main() {
 try {
-        ifstream fichier("/Users/arifoglu/ICT/heig_2024/PRG1/jan_13_16/jan17/equation5_5.txt");
-        if (!fichier.is_open()) {
-            cerr << "Erreur : Impossible d'ouvrir le fichier !" << endl;
-            return 1;
-        }
-
-        // Matris oluşturma ve doldurma
-        int n;
-        fichier >> n;
-        Matrice<Rationnel<int>> A(n, n + 1);
-        A.lireMatrice(fichier);
-
-        // Matris ekrana yazdırılır
-        cout << "Matrice lue :" << endl;
-        A.afficherMatrice();
-
-        // Çözüm işlemi
-        cout << "Résolution du système :" << endl;
-        Rationnel<int>* solution = A.resoudre();
-
-        if (solution != nullptr) {
-            cout << "Solution :" << endl;
-            for (int i = 0; i < n; ++i) {
-                cout << "x" << i + 1 << " = " << solution[i] << endl;
-            }
-            delete[] solution;
-        }
-
-    } catch (const exception& e) {
-        cerr << "Erreur : " << e.what() << endl;
+    ifstream fichier("equation5_5.txt");
+    if (!fichier.is_open()) {
+        throw std::runtime_error("Erreur : Impossible d'ouvrir le fichier !");
     }
+
+    int n = 5;
+    Matrice<int> A(n, n + 1);
+    A.lireMatrice(fichier);
+    fichier.close();
+
+    std::cout << "Matrice initiale :" << std::endl;
+    A.afficherMatrice();
+
+    for (int i = 0; i < n; i++) {
+        std::cout << "Avant pivotage pour colonne " << i + 1 << " :" << std::endl;
+        A.afficherMatrice();
+        A.pivoter(i);
+        std::cout << "Après pivotage pour colonne " << i + 1 << " :" << std::endl;
+        A.afficherMatrice();
+    }
+} catch (const std::exception& e) {
+    std::cerr << "Erreur : " << e.what() << std::endl;
+}
 
     return 0;
 }
@@ -74,6 +85,14 @@ g++ -c rationnel.cpp -std=c++20
 g++ -c matrice.cpp -std=c++20
 g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
 */
+
+
+
+
+
+
+
+
 
 //1)lire fichier
 /*
@@ -188,8 +207,8 @@ try {
 
 //4)Résolution du système
 /*
-  try {
-        ifstream fichier("/Users/arifoglu/ICT/heig_2024/PRG1/jan_13_16/jan17/equation8_8.txt");
+   try {
+        ifstream fichier("/Users/arifoglu/ICT/heig_2024/PRG1/jan_13_16/jan17/equation5_5.txt");
 
         if (!fichier) {
             throw runtime_error("Erreur : Impossible d'ouvrir le fichier !");
@@ -209,12 +228,50 @@ try {
             cout << "x" << i + 1 << " = " << solution[i] << endl;
         }
 
+        // Vérification de la solution
+        if (verifierSolution(A, solution, n, n + 1)) {
+            cout << "La solution est correcte." << endl;
+        } else {
+            cout << "La solution est incorrecte." << endl;
+        }
+
         delete[] solution;
 
     } catch (const exception& e) {
         cerr << "Erreur : " << e.what() << endl;
     }
 */
+/*
+try {
+        ifstream fichier("/Users/arifoglu/ICT/heig_2024/PRG1/jan_13_16/jan17/equation8_8.txt");
+
+        if (!fichier.is_open()) {
+            throw runtime_error("Erreur : Impossible d'ouvrir le fichier !");
+        }
+
+        int n = 5; 
+        Matrice<int> A(n, n + 1);
+        A.lireMatrice(fichier);
+        fichier.close();
+
+        cout << "Matrice lue :" << endl;
+        A.afficherMatrice();
+
+        int* solution = A.resoudre();
+        if (solution != nullptr) {
+            cout << "Solution :" << endl;
+            for (int i = 0; i < n; i++) {
+                cout << "x" << i + 1 << " = " << solution[i] << endl;
+            }
+            delete[] solution;
+        }
+
+    } catch (const exception& e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
+
+*/
+
 //5)plus grand pivotage
 
 //6)exception handling

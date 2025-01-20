@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include "rationnel.hpp" 
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -27,6 +28,9 @@ public:
     void setValeur(int ligne, int colonne, T valeur); 
     
     T* resoudre();
+
+    bool verifierContradiction(int ligne) const;
+
 };
 
 #endif 
