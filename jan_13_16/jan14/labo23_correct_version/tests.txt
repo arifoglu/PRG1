@@ -1,0 +1,107 @@
+//1
+/*
+try {
+        // Equation5_5.txt dosyasını aç
+        ifstream fichier("equation7_7.txt");
+        if (!fichier) {
+            throw runtime_error("Impossible d'ouvrir le fichier equation5_5.txt");
+        }
+
+        // Matris boyutunu belirle
+        const int lignes = 5;
+        const int colonnes = 6;
+        Matrice<double> matrice(lignes, colonnes);
+
+        // Dosyadan verileri oku
+        string ligne;
+        int i = 0;
+        while (getline(fichier, ligne) && i < lignes) {
+            stringstream ss(ligne);
+            for (int j = 0; j < colonnes; j++) {
+                ss >> matrice(i, j);
+            }
+            i++;
+        }
+
+        fichier.close();
+
+        // Matrisin başlangıç halini yazdır
+        cout << "Matrice initiale :" << endl;
+        matrice.afficherMatrice();
+
+        // Matris çözümünü yap
+        double* solution = matrice.resoudre();
+
+        // Çözüm sonuçlarını yazdır
+        cout << "Solution du système :" << endl;
+        for (int i = 0; i < lignes; i++) {
+            cout << "x" << i + 1 << " = " << solution[i] << endl;
+        }
+
+        delete[] solution;
+    } catch (const exception& e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
+*/
+
+//2
+/*
+    try {
+        // Matris oluşturma (float türü ile)
+        Matrice<float> matrice(3, 4);
+
+        // Test verileri ekleme
+        matrice(0, 0) = 1.5f; matrice(0, 1) = 2.5f; matrice(0, 2) = 3.5f; matrice(0, 3) = 4.5f;
+        matrice(1, 0) = 5.5f; matrice(1, 1) = 6.5f; matrice(1, 2) = 7.5f; matrice(1, 3) = 8.5f;
+        matrice(2, 0) = 9.5f; matrice(2, 1) = 10.5f; matrice(2, 2) = 11.5f; matrice(2, 3) = 12.5f;
+
+        // Matrisin yazdırılması
+        cout << "Matrice initiale (float) :" << endl;
+        cout << matrice;
+
+        // Matris çözümü (örnek bir pivotlama testi)
+        float* solution = matrice.resoudre();
+        cout << "Solution (float) :" << endl;
+        for (int i = 0; i < 3; i++) {
+            cout << "x" << i + 1 << " = " << solution[i] << endl;
+        }
+
+        delete[] solution;
+
+    } catch (const exception& e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
+*/
+
+//3
+/*
+try {
+        // Matris oluşturma (Rationnel<int> türü ile)
+        Matrice<Rationnel<int>> matrice(2, 3);
+
+        // Test verileri ekleme
+        matrice(0, 0) = Rationnel<int>(1, 2); // 1/2
+        matrice(0, 1) = Rationnel<int>(3, 4); // 3/4
+        matrice(0, 2) = Rationnel<int>(5, 6); // 5/6
+        matrice(1, 0) = Rationnel<int>(7, 8); // 7/8
+        matrice(1, 1) = Rationnel<int>(9, 10); // 9/10
+        matrice(1, 2) = Rationnel<int>(11, 12); // 11/12
+
+        // Matrisin yazdırılması
+        cout << "Matrice initiale (Rationnel<int>) :" << endl;
+        cout << matrice;
+
+        // Matris çözümü
+        Rationnel<int>* solution = matrice.resoudre();
+        cout << "Solution (Rationnel<int>) :" << endl;
+        for (int i = 0; i < 2; i++) {
+            cout << "x" << i + 1 << " = " << solution[i] << endl;
+        }
+
+        delete[] solution;
+
+    } catch (const exception& e) {
+        cerr << "Erreur : " << e.what() << endl;
+    }
+
+*/
