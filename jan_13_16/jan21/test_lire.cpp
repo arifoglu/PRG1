@@ -33,3 +33,4 @@ void testLireFichier(const string& filePath) {
         cerr << "Erreur générale : " << e.what() << endl;
     }
 }
+

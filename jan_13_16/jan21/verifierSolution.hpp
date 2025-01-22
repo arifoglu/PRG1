@@ -1,22 +1,29 @@
-#ifndef VERIFIER_SOLUTION_HPP
-#define VERIFIER_SOLUTION_HPP
+#ifndef VERIFIERSOLUTION_HPP
+#define VERIFIERSOLUTION_HPP
 
-#include "matrice.hpp" 
-#include <cmath>      
- 
-template<typename T>
+#include <cmath>
+#include <type_traits>
+#include "rationnel.hpp"
+#include "matrice.hpp"
+#include "Int.hpp" 
+
+template <typename T>
 bool verifierSolution(const Matrice<T>& matrice, const T* solution, int lignes, int colonnes) {
-    for (int i = 0; i < lignes; i++) {
-        T somme = matrice(i, colonnes - 1); 
-        for (int j = 0; j < colonnes - 1; j++) {
+    T threshold = T(1);
+    if constexpr (std::is_same_v<T, Rationnel<Int>>) {
+        threshold = T(1, 1e9);
+    }
+
+    for (int i = 0; i < lignes; ++i) {
+        T somme = matrice(i, colonnes - 1);
+        for (int j = 0; j < colonnes - 1; ++j) {
             somme -= matrice(i, j) * solution[j];
         }
-        // float/double 
-        if (std::fabs(somme) > 1e-9) {
-            return false; 
+        if (std::abs(somme) > threshold) {
+            return false;
         }
     }
-    return true; 
+    return true;
 }
 
-#endif 
+#endif

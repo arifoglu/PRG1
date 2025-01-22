@@ -1,6 +1,6 @@
 /*
   Laboratoire  Laboratoire 29 Résolution de systèmes d’équations linéaires
-  Date:        18.01.2025
+  Date:        23.01.2025
   Author:      Abdulkadir Arifoglu
   File:        arifoglu_labo29.cpp
   Compiler:    clang version 16.0.0
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
      if (argc < 2) {
         cerr << "Erreur : veuillez spécifier un test à exécuter." << endl;
         cerr << "Usage : ./arifoglu_labo29.exe <test_name> [file_path]" << endl;
-        cerr << "Tests disponibles : lire, pivotage, resoudre, unsigned_test" << endl;
+        cerr << "Tests disponibles : lire, pivotage, resoudre, unsigned_test,rationnel_test" << endl;
         return 1;
     }
 
@@ -49,6 +49,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         string filePath = argv[2];
+       
         testLireFichier(filePath);
     } else if (testName == "pivotage") {
         testPivotage();
@@ -68,53 +69,61 @@ int main(int argc, char* argv[]) {
         testUnsigned(filePath);
     } else {
         cerr << "Erreur : test inconnu." << endl;
-        cerr << "Tests disponibles : lire, pivotage, resoudre, unsigned_test" << endl;
+        cerr << "Tests disponibles : lire, pivotage, resoudre, unsigned_test,rationnel_test" << endl;
         return 1;
     }
+    
     return 0;
 }
 
 
-/*
+/* 
+// Compile codes 
 g++ -c unsigned.cpp -std=c++20
 g++ -c Setbase.cpp -std=c++20
 g++ -c Int.cpp -std=c++20
 g++ -c rationnel.cpp -std=c++20
 g++ -c matrice.cpp -std=c++20
 g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+Note:
+La derniere code(ligne 87) est utilisé uniquement pour la compilation.Il ne fonctionnera pas
+directement avec le fichier principal tant que les tests ne sont pas spécifiés
+correctement.Pour les codes de test, les commandes suivantes doivent être exécutées.
 
 ///////////////////////////////////// Testing Codes////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-1) Pour testing lire fichier => appliquez les codes suivants respectivements
+1) Pour testing lire fichier => appliquez les codes suivants respectivement
 
 g++ -c test_lire.cpp -std=c++20
-g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
-./arifoglu_labo29.exe lire equation5_5.txt
-./arifoglu_labo29.exe lire equation6_6.txt
-./arifoglu_labo29.exe lire equation7_7.txt
-./arifoglu_labo29.exe lire equation8_8.txt
+g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o test_resoudre.o test_unsigned.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+./arifoglu_labo29.exe lire 
 
-2) Pour testing pivotages => appliquez les codes suivants respectivements
+2) Pour testing pivotages => appliquez les codes suivants respectivement
 
 g++ -c test_pivotage.cpp -std=c++20
-g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
- ./arifoglu_labo29.exe pivotage
+g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o test_resoudre.o test_unsigned.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+./arifoglu_labo29.exe pivotage
 
-3) Pour testing resoudre => appliquez les codes suivants respectivements
+3) Pour testing resoudre => appliquez les codes suivants respectivement
 
 g++ -c verifierSolution.hpp -std=c++20
-g++ -c test_resoudre.cpp -std=c++20 g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o
-   test_pivotage.o test_resoudre.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
-./arifoglu_labo29.exe resoudre equation5_5.txt
-./arifoglu_labo29.exe resoudre equation6_6.txt
-./arifoglu_labo29.exe resoudre equation7_7.txt
-./arifoglu_labo29.exe resoudre equation8_8.txt
+g++ -c test_resoudre.cpp -std=c++20 
+g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o test_resoudre.o test_unsigned.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+arifoglu_labo29.exe -std=c++20
+./arifoglu_labo29.exe resoudre 
 
 
-4) Pour testing Unsigned 
+4) Pour testing Unsigned => appliquez les codes suivants respectivement
 g++ -c test_unsigned.cpp -std=c++20
 g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o test_resoudre.o test_unsigned.o arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+./arifoglu_labo29.exe unsigned_test 
+
+5) Pour testing Rational => appliquez les codes suivants respectivement
+g++ -c test_rationnel.cpp -std=c++20
+g++ unsigned.o Setbase.o Int.o rationnel.o matrice.o test_lire.o test_pivotage.o test_resoudre.o test_unsigned.o test_rationnel.o
+arifoglu_labo29.cpp -o arifoglu_labo29.exe -std=c++20
+./arifoglu_labo29.exe rationnel_test
 
 */
 

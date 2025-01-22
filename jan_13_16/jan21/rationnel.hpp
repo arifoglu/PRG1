@@ -45,7 +45,7 @@ class Rationnel {
         bool operator>=(const Rationnel& autre) const;
 };
 
-// Surcharge de l'opérateur << (utiliser ici pour éviter les erreurs de linkage)
+// Surcharge de l'opérateur << (utilise ici pour éviter les erreurs de linkage)
 template<typename T>
 inline std::ostream& operator<<(std::ostream& os, const Rationnel<T>& r){
     os << r.numerateur << " / " << r.denominateur;

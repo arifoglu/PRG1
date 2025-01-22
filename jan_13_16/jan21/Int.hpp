@@ -51,7 +51,20 @@ class Int{
 
         static Int fibonacci(unsigned int n);
         static Int factorielle(unsigned int n);
+
+        Int operator-() const {
+        Int result = *this;           
+        result.est_negatif = !est_negatif; 
+        return result;                  
+        }
+        friend Int abs(const Int& value);
+        
 };
 
+inline Int abs(const Int& value) {
+    Int result = value;
+    result.est_negatif = false; 
+    return result;
+}
 
 #endif

@@ -57,3 +57,4 @@ inline ostream& operator<<(ostream& os, const Matrice<T>& matrice) {
     }
     return os;
 }
+
