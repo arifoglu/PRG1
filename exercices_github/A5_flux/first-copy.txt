@@ -1,5 +1,0 @@
-new person is speaking
-new person is joking
-new person is laughing
-new person is sleeping
-

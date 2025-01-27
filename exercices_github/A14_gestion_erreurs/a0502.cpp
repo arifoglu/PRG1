@@ -43,9 +43,9 @@ int main() {
    return EXIT_SUCCESS;
 }
 /*
-NOTE: switch icinde dogrudan eslesen case calisir.break veya return yoksa diger
-case ler calisir.fakat case lerde throw oldugu icin throw try catch bloguna gonderir.
+NOTE: switch icinde dogrudan eslesen case calisir,break veya return varsa diger
+case e gecmez.Eger break ,return yoksa diger case durumuna gecer.Case de throw
+olursa error try catch bloguna gonderir. 
 */
 /* 
-
 */

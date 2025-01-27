@@ -14,9 +14,9 @@ class C {
 
 int main() {
 
-    //  std::array<C,3> a;
-    //  a[0] = a[1];
-    //  cout << " / " ;
+    //std::array<C,3> a;
+    //a[0] = a[1];
+    //cout << " / " ;
 
     //C c(1);
     //vector<C> v;

@@ -41,3 +41,6 @@ void removeFromVector(std::vector<int>& vec, size_t pos){
    }
    vec.erase(vec.begin() + pos);
 }
+
+
+

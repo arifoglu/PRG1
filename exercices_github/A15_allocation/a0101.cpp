@@ -1,7 +1,5 @@
 #include <iostream>
-
 using namespace std;
-
 
 class C {
    int i;
@@ -10,10 +8,9 @@ public:
    C(int i) : i(i) { cout << "C" << i << " " << flush; }
    ~C() { cout << "D" << i << " " << flush; }
 };
-
-C* f(){ return new C();}
-C* f(int i) { return new C(i);}
-void g(C* p) {delete p;}
+C* f(){return new C();}
+C* f(int n){ return new C(n);}
+void* g(C* p) {delete p ;}
 
 int main() {
    auto p1 = f();

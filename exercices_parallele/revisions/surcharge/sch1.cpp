@@ -19,10 +19,10 @@ int main() {
 
     //f(x, n);    
     //f(x, s);    
-    // f(b, x);   
+    //f(b, x);   
     //f(p, s);   
     //f(c, y);   
-    // f(y, s);   
+    //f(y, s);   
     //f(s, x, x); 
     //f(s, n, y);
 }

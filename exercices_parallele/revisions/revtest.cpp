@@ -1,27 +1,22 @@
 #include <iostream>
-#include <string>
-#include <span>
+#include <cstdlib>
+
 using namespace std;
 
-size_t oter_hors_limite(span<double> s,const array<double,2>& arr){
-    size_t w = 0;
-    for(size_t i = 0; i < s.size();++i){
-        if(s[i] >= arr[0] && s[i] <= arr[1]){
-            s[w++] = s[i];
-        }
+struct Est_multiple_de{
+    int n;
+    bool operator()(int a) const{
+    return a % n == 0;
     }
-    return w;
-}
+};
 
-int main() { 
-   array a{1.0, 2.3, 1.4, 5.3, 3.4, 2.4, 4.6}; 
-   auto n = oter_hors_limite(a, array{2.3, 5.0}); 
-   for (size_t i = 0; i < n; ++i) 
-      cout << a[i] << ' '; 
- 
-   cout << endl; 
-   vector v{1.0, 2.3, 1.4, 5.3, 3.4, 2.4, 4.6}; 
-   v.resize(oter_hors_limite(v, array{1.4, 3.4})); 
-   for (double e : v) 
-      cout << e << ' '; 
+int main() {
+    auto est_pair = Est_multiple_de{2};
+    auto est_rond = Est_multiple_de{10};
+    
+    int n; cin >> n;
+    if (est_pair(n) and not est_rond(n)) {
+        cout << n << " est pair mais pas multiple de 10";
+    }
+   return EXIT_SUCCESS;
 }
