@@ -1,51 +1,45 @@
 #include <iostream>
+
 using namespace std;
 
 class MonEntier{
     private:
-        int x;
+        int num;
     public:
-        MonEntier(int num = 0) : x(num){}  
-
-        friend ostream& operator<<(ostream&,const MonEntier&); 
-
-        friend bool operator==(const MonEntier&,const MonEntier&); 
-        friend bool operator!=(const MonEntier&,const MonEntier&);
-
-
+        MonEntier();
+        MonEntier(int n);
+        friend ostream& operator<<(ostream& os, const MonEntier& p);
+        friend bool operator==(const MonEntier& p1,const MonEntier& p2);
         MonEntier operator++(int);
         MonEntier& operator++();
-
-        MonEntier& operator+=(const MonEntier&);
-
-        friend MonEntier operator+(const MonEntier& p1,const MonEntier& p2);
-
+        MonEntier operator+(const MonEntier& p2);
+        MonEntier& operator+=(const MonEntier& autre);
 };
-ostream& operator<<(ostream& os,const MonEntier& p){
-    os << "n = " << p.x ;
+MonEntier::MonEntier(): num(0.0){};
+MonEntier::MonEntier(int n): num(n){};
+
+ostream& operator<<(ostream& os, const MonEntier& p){
+    os << "n = " << p.num ;
     return os;
-}  
-bool operator==(const MonEntier& p1,const MonEntier& p2){
-    return (p1.x == p2.x);
 }
-bool operator!=(const MonEntier& p1,const MonEntier& p2){
-    return (p1.x != p2.x);
+bool operator==(const MonEntier& p1,const MonEntier& p2){
+    return (p1.num == p2.num);
 }
 MonEntier MonEntier::operator++(int){
     MonEntier temp = *this;
-    x++;
+    num++;
     return temp;
 }
 MonEntier& MonEntier::operator++(){
-    ++x;
+    num++;
     return *this;
+}
+MonEntier operator+(const MonEntier& p2){
+    return MonEntier(this->num + p2.num);
 }
 MonEntier& MonEntier::operator+=(const MonEntier& autre){
-    x += autre.x;
+    num += autre.num;
     return *this;
-}
-MonEntier operator+(const MonEntier& p1,const MonEntier& p2){
-    return MonEntier(p1.x + p2.x);
 }
 
 
