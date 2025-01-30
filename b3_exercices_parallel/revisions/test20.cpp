@@ -1,30 +1,26 @@
 #include <iostream>
-#include <array>
 #include <vector>
-#include <span>
 using namespace std;
 
-size_t oter_hors_limite(span<double>, array<double,2> );
+bool is_negative(int x){return x < 0;};
 
-int main() { 
-   array a{1.0, 2.3, 1.4, 5.3, 3.4, 2.4, 4.6}; 
-   auto n = oter_hors_limite(a, array{2.3, 5.0}); 
-   for (size_t i = 0; i < n; ++i) 
-      cout << a[i] << ' '; 
- 
-   cout << endl; 
-   vector v{1.0, 2.3, 1.4, 5.3, 3.4, 2.4, 4.6}; 
-   v.resize(oter_hors_limite(v, array{1.4, 3.4})); 
-   for (double e : v) 
-      cout << e << ' '; 
-}
+struct est_multiple_foncteur{
+   int n;
+   bool operator() (int e) const{return e % n == 0; }
+};
 
-size_t oter_hors_limite(span<double> s , array<double,2> arr){
-    size_t w = 0;
-    for(size_t i = 0; i < s.size();++i){
-        if(s[i] >= arr[0] && s[i] <= arr[1]){
-           s[w++] = s[i];
-        }
-    }
-    return w;
+template<typename T,T n = 2>
+bool est_multiple(T e) {return e % n == 0;}
+
+int main() {
+    vector<int> v = {1, -2, 3, -4, 5, -6};
+   int n =2;
+
+   cout << count_if(v.begin(),v.end(),is_negative)                   << endl;
+   cout << count_if(v.begin(),v.end(),[](int n){return n % 2 == 0;}) << endl;
+   cout << count_if(v.begin(),v.end(),est_multiple_foncteur{n})      << endl;
+   cout << count_if(v.begin(),v.end(),est_multiple<int,2>)           << endl;
+   
+
+    return 0;
 }

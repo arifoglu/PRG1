@@ -17,6 +17,9 @@ int main() {
     //cout << sizeof(int)<<endl;
     //cout << sizeof(long)<<endl;
     //cout << sizeof(long long)<<endl;
+    //cout << sizeof(unsigned)<<endl;
+    //cout << sizeof(double)<<endl;
+    //cout << sizeof(float)<<endl;
 
     ///3)
     //cout << numeric_limits<int>::lowest() <<endl;  // -2147483648

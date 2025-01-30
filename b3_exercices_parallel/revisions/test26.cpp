@@ -19,6 +19,8 @@ bool est_pair(int a) { return a % 2 == 0; }
 int main() { 
    vector<int> v1 { 1, 2, 3, 5, 7, 10, 15, 22 }; 
    supprimer_si(v1, est_pair); 
+   //version lambda
+   // supprimer_si(v1,[](int a){return a%2 == 0;})
    for(int e : v1) cout << e << ' '; 
    cout << endl; 
  
