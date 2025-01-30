@@ -85,26 +85,5 @@ int main() {
     //while(in.get(c))
     //cout << c ;
 
-    int      a, b;
-   double   x, y;
-   char     c;
-   
-   cout << "entrer des valeurs : ";   
-   while(cin.get() != '\n');
-   cout << endl;
-   cin  >> a;
-   cin  >> b;
-   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-   cin  >> x;
-   cin  >> y;
-   cout << "voulez-vous sauver [o/n] : ";
-   cin  >> c;
-   cout << "sauver : " << c << endl;
-   cin  >> a;
-   cin  >> b;
-   cin  >> x;
-
-   cout << "presser ENTER pour quitter";
-   cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return EXIT_SUCCESS;
 }

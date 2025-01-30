@@ -2,24 +2,24 @@
 #include <string.h>
 using namespace std;
 
-//I
-template <typename T> T minimum(T a, T b){
-    return a < b ? a : b;
-}
-//II
-char* minimum(char* a, char* b) { //Version spécialisée pour char*
-if (strcmp(a, b) < 0) return a; // Non équivalente à const char*
- return b;
- }
+template <typename T, typename U> void f(T,  U)    {cout << 1 << endl;} //1
+template <typename T, typename U> void f(T*, U)    {cout << 2 << endl;} //2
+template <typename T>             void f(T,  T)    {cout << 3 << endl;} //3
+template <typename T>             void f(T, int)   {cout << 4 << endl;} //4
+                                  void f(int,int)  {cout << 5 << endl;} //5
 
 int main() {
-    int n = 40, p = 12;
-    char* texte1 = "monsieur", *texte2 = "bonjour";// !! Non ISO
-    const char* t1 = "monsieur", *t2 = "bonjour";
-    cout << "min(n,p) : " << minimum(n,p) << endl; // I 
-    //cout << "min(texte1,texte2) = " << minimum(texte1,texte2)<<endl;
-    cout << "min(t1, t2) = " << minimum(t1, t2) << endl;// Instancie const char* minimum
-    cout << "min<>(texte1, texte2) = " << minimum<>(texte1, texte2) << endl;
+    char c;
+    int i ;
+    double d;
+    //f(c,d);             //  1
+    //f(&c,d);            //  1 or 2 => 2 plus specialisé
+    //f(&c,&c);           //  Ambiguité 
+    //f(d,d);             //  3 
+    //f(&i,&i);           //  Ambiguité
+    //f(d,i);             //  1 or 4 => 4 plus specialisé
+    //f(i,i);             //  3 or 5 => 5 plus specialisé
+    //f(d,d);             //  3  
     return 0;
 }
 

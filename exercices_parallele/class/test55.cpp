@@ -9,9 +9,8 @@ class Tableau{
         Tableau(){
             cout << "constructor fonctionne. " << n << " elements : ";
         }
-        T& operator[](int i){
-            return tab[i];
-        }
+        T operator[](int i)const{ return tab[i];}// elements yazdirmak(const) 
+        T& operator[](int i)    { return tab[i];}// elements eklemek 
 };
 
 class Point{

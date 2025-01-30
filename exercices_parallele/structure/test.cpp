@@ -9,7 +9,7 @@ int main(){
     while(i != 0){
         cout << --i;
     }
-    3210
+
     */
    /*
    int j = 8;
@@ -17,7 +17,7 @@ int main(){
     cout << j;
     j /= 2;
    }
-   8421
+
     */
    /*
     int k = 1;
@@ -25,7 +25,7 @@ int main(){
         cout << k;
         ++k;
     }
-    rien
+
     */
    /*
    int n = 42;
@@ -33,7 +33,7 @@ int main(){
     cout << k;
     --n;
    }
-   21
+
    */
   /*
   int j = 8;
@@ -41,7 +41,6 @@ int main(){
     cout << j;
     j /= 2;
   }
-  84210000...
     */
     return EXIT_SUCCESS;
 }

@@ -21,8 +21,8 @@ int main() {
     cout << "f()    : avant\n";
 
     //f(0);
-    f(1);
-    f(2);
+    //f(1);
+    //f(2);
     
     cout << "f()    : apres\n";
     cout << "main() : fin\n";

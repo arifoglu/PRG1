@@ -9,12 +9,12 @@ class C {
 };
 
 //1) variable globale
-// C c; 
+//C c; 
 
 void f() {
     cout << "f()    : debut \n"; 
     //2)variable locale static
-    static C c;
+    //static C c;
     cout << "f()    : fin   \n"; 
 }
 

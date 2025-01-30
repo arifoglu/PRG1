@@ -1,25 +1,23 @@
 #include <iostream>
-#include <string.h>
 using namespace std;
 
-template <typename T, typename U> void f(T,  U)    {cout << 1 << endl;} //1
-template <typename T, typename U> void f(T*, U)    {cout << 2 << endl;} //2
-template <typename T>             void f(T,  T)    {cout << 3 << endl;} //3
-template <typename T>             void f(T, int)   {cout << 4 << endl;} //4
-                                  void f(int,int)  {cout << 5 << endl;} //5
+template <typename T, typename U> int fct(T,       U)      { cout << "1" ;} // 1
+template <typename T, typename U> int fct(T*,      U)      { cout << "2" ;} // 2
+template <typename T>             int fct(T,       T)      { cout << "3" ;} // 3
+template <typename T>             int fct(T,       int)    { cout << "4" ;} // 4
+                                  int fct(int,     int)    { return 55; }; // 5
+                                  int fct(int*,    float)  { return 66; };// 6
 
 int main() {
-    char c;
-    int i ;
-    double d;
-    //f(c,d);             //  1
-    //f(&c,d);            //  1 or 2 => 2 plus specialisé
-    //f(&c,&c);           //  Ambiguité 
-    //f(d,d);             //  3 
-    //f(&i,&i);           //  Ambiguité
-    //f(d,i);             //  1 or 4 => 4 plus specialisé
-    //f(i,i);             //  3 or 5 => 5 plus specialisé
-    //f(d,d);             //  3  
-    return 0;
-}
+    int     i  = 1;
+    char    c  = 65;     // code ASCII de 'A'
+    short   s  = 2;
+    float   f  = 1.7f;
+    double  d  = 3.1;
+    int*    pi = &i;     // ptr sur i
+    char*   pc = &c;     // ptr sur c
+    float*  pf = &f;     // ptr sur f
+    double* pd = &d;     // ptr sur d
 
+    fct(pc,pd);
+}                                  
