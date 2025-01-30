@@ -5,6 +5,7 @@
 #include <cassert>
 
 using namespace std;
+class MonException{};
 
 class Vec3{
    private:
@@ -30,6 +31,7 @@ Vec3::Vec3(array<double,3>::iterator first, array<double,3>::iterator last){
    for(auto it = first; it != last && i <arr.size();++it,++i){
       arr[i] = *it;
    }
+   if(i!=3)throw MonException();
    size = arr.size();
 }
 Vec3::Vec3(vector<double>::iterator first, vector<double>::iterator last){
@@ -38,6 +40,7 @@ Vec3::Vec3(vector<double>::iterator first, vector<double>::iterator last){
       arr[i] = *it;
    }
    size = arr.size();
+   if(i!=3)throw MonException();
 }
 
 ostream& operator<<(ostream& os, const Vec3& vec){

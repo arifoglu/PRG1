@@ -24,7 +24,7 @@ class Image{
          }
       } 
    public:
-      Image(size_t w, size_t h,Color c) : w(w), h(h) , data(h*w) {};
+      Image(size_t w, size_t h,Color c) : w(w), h(h) , data(h*w,c) {};
       size_t getw()const{return w;};
       size_t geth()const{return h;};
       Color const& operator[](Coord const& p)const {return data[idx(p)];}

@@ -1,9 +1,9 @@
 #include "display_csv.h"
 
 
-void display_csv(string str,char ch, int col){
-    
-    ifstream fichier(str, ios::in);
+void display_csv(const string& filename,char c, int col){
+    ifstream fichier(filename,ios::in);
+
     if(!fichier){
         throw File_not_found{};
     }
@@ -12,12 +12,10 @@ void display_csv(string str,char ch, int col){
     while(getline(fichier,line)){
         stringstream s(line);
         string element;
-        while(getline(s,element,ch)){
-            cout << setw(col) << element ;    
+        while(getline(s,element,c)){
+            cout << setw(col) << element;
         }
         cout << endl;
     }
-    
     fichier.close();
-
 }
